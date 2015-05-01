@@ -25,6 +25,7 @@ public class SearchPatientControl {
 
 	@FXML
 	private TextField filterField;
+	
 	@FXML
 	private TableView<PatientForSearch> patientTable;
 
@@ -51,7 +52,8 @@ public class SearchPatientControl {
 
 	@FXML
 	private TableColumn<PatientForSearch, String> waitingTimeColumn;
-
+	
+	
 	private ObservableList<PatientForSearch> masterData = FXCollections
 			.observableArrayList();
 
