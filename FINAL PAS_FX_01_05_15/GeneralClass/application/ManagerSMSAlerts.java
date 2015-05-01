@@ -33,7 +33,7 @@ public class ManagerSMSAlerts implements IAlert {
 	 * @param mangerPhoneNumber
 	 * @return
 	 */
-	public String setManagerPhoneNumber(String mangerPhoneNumber) {
+	public void setManagerPhoneNumber() {
 		String url = DatabaseENums.DATABASEURL.getDatabase();
 		Connection con;
 		Statement stmt;
@@ -43,32 +43,34 @@ public class ManagerSMSAlerts implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
-		}
-		// making the connection
-		try {
-			con = DriverManager.getConnection(url,
-					DatabaseENums.DATABASEUSERNAME.getDatabase(),
-					DatabaseENums.DATABASEPASSWORD.getDatabase());
-			// create a statement object
-			stmt = con.createStatement();
-			// supply the statement object with a string to execute
-			ResultSet rs = stmt
-					.executeQuery(DatabaseENums.DATABASEMANAGERTELEPHONESELECTQUERY
-							.getDatabase());
-			managerPhoneNumber = rs
-					.getString(DatabaseENums.DATABASESTAFFTELEPHONE
-							.getDatabase());
-			// close statement object
-			stmt.close();
-			// close connection
-			con.close();
-		} catch (SQLException ex) {
-			System.err.println("SQLException: " + ex.getMessage());
-		}
-		return managerPhoneNumber;
 
+			try {
+				// making the connection
+				con = DriverManager.getConnection(url,
+						DatabaseENums.DATABASEUSERNAME.getDatabase(),
+						DatabaseENums.DATABASEPASSWORD.getDatabase());
+				// create a statement object
+				stmt = con.createStatement();
+				// supply the statement object with a string to execute
+				ResultSet rs = stmt
+						.executeQuery(DatabaseENums.DATABASEMANAGERTELEPHONESELECTQUERY
+								.getDatabase());
+				while (rs.next()) {
+					this.managerPhoneNumber = rs
+							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
+									.getDatabase());
+					// close statement object
+					stmt.close();
+					// close connection
+					con.close();
+				}
+			} catch (SQLException ex) {
+				System.err.println("SQLException: " + ex.getMessage());
+
+			}
+		}
+		
 	}
-
 	
 	/**
 	 * 
@@ -137,6 +139,7 @@ public class ManagerSMSAlerts implements IAlert {
 		String message = "&message="
 				+ AlertsENums.ALERTMANAGERONCALLFULLYENGAGED;
 		String sender = "&sender=" + AlertsENums.SMSSENDER.getAlert();
+		setManagerPhoneNumber();
 		String number = "&numbers=" + getManagerPhoneNumber();
 
 		// calling the method to send the data
@@ -155,6 +158,7 @@ public class ManagerSMSAlerts implements IAlert {
 		String hash = "&hash=" + AlertsENums.SMSHASHKEY.getAlert();
 		String message = "&message=" + AlertsENums.ALERTMANAGERWAITINGTIME;
 		String sender = "&sender=" + AlertsENums.SMSSENDER.getAlert();
+		setManagerPhoneNumber();
 		String number = "&numbers=" + getManagerPhoneNumber();
 
 		// calling the method to send the data
