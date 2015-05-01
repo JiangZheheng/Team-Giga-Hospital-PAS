@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 /**
  * The comparator class is used to take in the details of the queue and compare
  * waiting times for all patients in the A and E queue. If a patient has been
@@ -14,8 +17,22 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class SortPatientQueue {
-
+	/**
+	 * declaration for insitu class
+	 */
 	public InSitu insitu = new InSitu();
+	/**
+	 * declaration of sms alert for on call team
+	 */
+	OnCallSMSAlert smsAlert = new OnCallSMSAlert();
+	/**
+	 * declaration of manager email alert
+	 */
+	ManagerEmailAlert managerEmail = new ManagerEmailAlert();
+	/**
+	 * declaration of manager SMS alert
+	 */
+	ManagerSMSAlerts managerSMS = new ManagerSMSAlerts();
 
 	/**
 	 * default constructor for SortPatientComparator Class
@@ -53,9 +70,11 @@ public class SortPatientQueue {
 
 				}
 			}
-			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT && averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
+			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT
+					&& averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
 				status = Limits.STATUS_CODE_ONE;
-			} else if (averageWaitingTime >= Limits.STATUS_ONE_UPPER_LIMIT && averageWaitingTime < Limits.STATUS_TWO_UPPER_LIMIT) {
+			} else if (averageWaitingTime >= Limits.STATUS_ONE_UPPER_LIMIT
+					&& averageWaitingTime < Limits.STATUS_TWO_UPPER_LIMIT) {
 				status = Limits.STATUS_CODE_TWO;
 			} else if (averageWaitingTime >= Limits.STATUS_TWO_UPPER_LIMIT) {
 				status = Limits.STATUS_CODE_THREE;
@@ -88,7 +107,7 @@ public class SortPatientQueue {
 	 * @throws MessagingException
 	 * @throws AddressException
 	 */
-	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue) {
+	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue) throws AddressException, MessagingException {
 
 		boolean twoPatientsWaiting = false;
 
@@ -115,6 +134,8 @@ public class SortPatientQueue {
 				counter++;
 				if (counter == 2) {
 					twoPatientsWaiting = true;
+					managerEmail.generateAndSendEmailOnCallFullyEngaged();
+					managerSMS.sendSSMSManagerOnCallFullyEngaged();
 				} else {
 					twoPatientsWaiting = false;
 				}
@@ -133,10 +154,10 @@ public class SortPatientQueue {
 	public boolean calculateQueueSize(LinkedList<Patient> patientQueue) {
 
 		if (patientQueue.size() >= Limits.PATIENT_LIMIT_IN_QUEUE) {
-			// if the queue is >= 10 then calling method to send non-emergency
-			// patients to the nearest hospital
-			// sendToNearestHospital(patientQueue, patient);
+
 			// if the queue is >= 10 calling method to send SMS to OnCall team
+
+			smsAlert.sendSMSToOnCallTeam();
 
 			return true;
 		}

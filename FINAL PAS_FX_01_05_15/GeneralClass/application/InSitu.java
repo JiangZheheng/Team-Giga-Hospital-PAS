@@ -8,7 +8,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 public class InSitu {
+	/**
+	 * declaration of alert for manager email
+	 */
+	ManagerEmailAlert managerEmail = new ManagerEmailAlert();
+	/**
+	 * declaration of alert for manager sms
+	 */
+	ManagerSMSAlerts managerSMS = new ManagerSMSAlerts();
 
 	/**
 	 * default constructor
@@ -56,9 +67,9 @@ public class InSitu {
 			if (patient.getTriageCategory() != Triage.EMERGENCY.getLevel()) {
 				// remove patient from queue
 				patientQueue.remove(patient);
-				//put patient in situ
-				//treat patient in situ
-				//discharge patient
+				// put patient in situ
+				// treat patient in situ
+				// discharge patient
 				// need to write patient leaving time to file
 			}
 		}
@@ -97,7 +108,8 @@ public class InSitu {
 	}
 
 	/**
-	 * Boolean to get if vacant space available for patient 
+	 * Boolean to get if vacant space available for patient
+	 * 
 	 * @return
 	 */
 	public boolean isVacant() {
@@ -105,7 +117,8 @@ public class InSitu {
 	}
 
 	/**
-	 * Boolean to set if space for patient 
+	 * Boolean to set if space for patient
+	 * 
 	 * @param vacant
 	 */
 	public void setVacant(boolean vacant) {
@@ -113,7 +126,8 @@ public class InSitu {
 	}
 
 	/**
-	 * Method to get time patient enters treatment in situ 
+	 * Method to get time patient enters treatment in situ
+	 * 
 	 * @return
 	 */
 	public Date getTimeInSitu() {
@@ -121,22 +135,24 @@ public class InSitu {
 	}
 
 	/**
-	 * Method to set time patient begins treatment in situ 
+	 * Method to set time patient begins treatment in situ
+	 * 
 	 * @param timeInSitu
 	 */
 	public void setTimeInSitu(Date timeInSitu) {
-		if(timeInSitu!=null){
-			timeOutOfInSitu=new Date();
+		if (timeInSitu != null) {
+			timeOutOfInSitu = new Date();
 			timeOutOfInSitu.setTime(timeInSitu.getTime()
 					+ TimeUnit.MINUTES.toMillis(Limits.TIME_IN_INSITU));
 			this.timeInSitu = timeInSitu;
-			}else{
-				timeOutOfInSitu=null;
-			}
+		} else {
+			timeOutOfInSitu = null;
+		}
 	}
 
 	/**
-	 * Method to get time patient leaves in situ 
+	 * Method to get time patient leaves in situ
+	 * 
 	 * @return
 	 */
 	public Date getTimeOutOfInSitu() {
@@ -144,59 +160,69 @@ public class InSitu {
 	}
 
 	/**
-	 * Method to set time patient leaves in situ 
+	 * Method to set time patient leaves in situ
+	 * 
 	 * @param timeOutOfInSitu
 	 */
 	public void setTimeOutOfInSitu(Date timeOutOfInSitu) {
 		this.timeOutOfInSitu = timeOutOfInSitu;
 	}
-	
+
 	/**
-	 * Method to remove patient from queue automatically once treatment is finished 
+	 * Method to remove patient from queue automatically once treatment is
+	 * finished
+	 * 
 	 * @return
 	 */
 	public boolean removePatientFromTreatmentroomAutomatically() {
-		if((this.timeOutOfInSitu.getTime()-new Date().getTime())/1000<2){
+		if ((this.timeOutOfInSitu.getTime() - new Date().getTime()) / 1000 < 2) {
 			this.patient.setLeaveTime(new Date());
 			this.setPatient(null);
 			this.setVacant(true);
+
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+	/**
+	 * Method to control the alerts to the manager
+	 * 
+	 * @return
+	 * @throws MessagingException 
+	 * @throws AddressException 
+	 */
+	public boolean alertManager() throws AddressException, MessagingException {
+		if ((this.timeOutOfInSitu.getTime() - this.getTimeInSitu().getTime()) / 1000 / 60 >= Limits.TIME_IN_INSITU) {
+			
+			managerSMS.sendSSMSManagerOnCallFullyEngaged();
+			
+			managerEmail.generateAndSendEmailOnCallFullyEngaged();
 			
 			return true;
-		}else{
-			return false;
-		}
-		
-	}
-	
-	/**
-	 * Method to control the alerts to the manager 
-	 * @return
-	 */
-	public boolean alertManager(){
-		if((this.timeOutOfInSitu.getTime()-this.getTimeInSitu().getTime())/1000/60>=Limits.TIME_IN_INSITU){
-//			new ManagerSMSAlerts().sendSSMSManagerOnCallFullyEngaged();
-			System.out.println("sendSSMSManagerOnCallFullyEngaged()");
-			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
-	
+
 	/**
-	 * Method to discharge the patients from the queue 
+	 * Method to discharge the patients from the queue
+	 * 
 	 * @param allPatients
 	 * @param patient
 	 */
-	public void dischargePatient(List<Patient> allPatients,Patient patient){
+	public void dischargePatient(List<Patient> allPatients, Patient patient) {
 		this.setPatient(null);
 		this.setVacant(true);
 		this.setTimeInSitu(null);
 		patient.setLeaveTime(new Date());
-		
+
 	}
-	
+
 	/**
-	 * Method to allocate extra time to patients 
+	 * Method to allocate extra time to patients
 	 */
 	public void allocateExtraTime() {
 

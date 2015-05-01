@@ -105,7 +105,7 @@ public class GUIMain extends Application {
 
 			@Override
 			public void run() {
-
+				// delay the thread to ensure message is only sent once
 				boolean delay = false;
 
 				try {
@@ -147,14 +147,23 @@ public class GUIMain extends Application {
 						while (!delay) {
 							Thread.sleep(1000);
 
-							for (InSitu inSitu : inSitus) {
-								if (inSitu.isVacant() == false) {
+							for (InSitu inSitu : inSitus)
+								try {
+									{
+										if (inSitu.isVacant() == false) {
 
-									if (inSitu.alertManager()) {
-										delay = true;
+											if (inSitu.alertManager()) {
+												delay = true;
+											}
+										}
 									}
+								} catch (AddressException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (MessagingException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-							}
 						}
 						delay = false;
 						Thread.sleep(10000 * 600);
@@ -169,6 +178,45 @@ public class GUIMain extends Application {
 
 		inSituThread.setDaemon(true);
 		inSituThread.start();
+		
+		System.out.println("alertThread");
+		Thread alertThreadForThirtyMinAlert = new Thread() {
+
+			@Override
+			public void run() {
+				// delay the thread to ensure message is only sent once
+				boolean delay = false;
+
+				try {
+					while (true) {
+						while (!delay) {
+							Thread.sleep(1000);
+
+							if (sortPatientQueue
+									.thirtyMinuteManagerAlert(patientQueue)) {
+								
+								delay = true;
+							}
+						}
+						delay = false;
+						Thread.sleep(10000 * 600);
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				} catch (AddressException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (MessagingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+
+		};
+
+		alertThreadForThirtyMinAlert.setDaemon(true);
+		alertThreadForThirtyMinAlert.start();
 	}
 
 	/**
