@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * class to control the JavaFX for the staff  
+ */
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -29,33 +33,63 @@ import javafx.util.Callback;
 
 public class viewStaffControl implements Initializable {
 
+	/**
+	 * declaration to represent a column for the first name in the staff 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffFirstNameColumn;
 
+	/**
+	 * declaration to represent the team column in the table
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffTeamColumn;
 
+	/**
+	 * declaration to represent a column of the email in the staff table 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffEmailColumn;
 
+	/**
+	 * declaration to represent the table view for the manager 
+	 */
 	@FXML
 	private TableView<Staff> staffTableManager;
 
+	/**
+	 * declaration to represent title column in the staff table 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffTitleColumn;
 
+	/**
+	 * declaration to represent last name column in the staff table 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffLastNameColumn;
 
+	/**
+	 * declaration to represent the back button in the gui 
+	 */
 	@FXML
 	private Button back;
 
+	/**
+	 * declaration to represent the staff ID column in the gui  
+	 */
 	@FXML
 	private TableColumn<Staff, Integer> staffIDColumn;
 
+	/**
+	 * declaration to represent role column in the view 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffRoleColumn;
 
+	/**
+	 * declaration to represent staff telephone number in the table view 
+	 */
 	@FXML
 	private TableColumn<Staff, String> staffTelephoneNumColumn;
 
