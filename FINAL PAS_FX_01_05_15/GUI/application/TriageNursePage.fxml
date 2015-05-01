@@ -50,11 +50,6 @@
 						<MenuItem fx:id="patientSearch" mnemonicParsing="false" onAction="#patienSearchOnClick" text="Search Queue" />
 					</items>
 				</Menu>
-				<Menu mnemonicParsing="false" text="Treatments">
-					<items>
-						<MenuItem mnemonicParsing="false" text="Show all treatments" />
-					</items>
-				</Menu>
 				<Menu mnemonicParsing="false" text="Triage">
 					<items>
 						<MenuItem fx:id="setTriage" mnemonicParsing="false" onAction="#setTriageOnClick" text="Set" />
