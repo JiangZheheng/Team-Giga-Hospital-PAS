@@ -1,11 +1,10 @@
 package application;
 
 /**
- * class to sort the queue based on Triage category 
+ *class to sort the queue based on Triage category 
  * implementing the Comparator interface
  */
 
-import java.util.Collections;
 import java.util.Comparator;
 
 public class SortPatientComparator implements Comparator<Patient> {

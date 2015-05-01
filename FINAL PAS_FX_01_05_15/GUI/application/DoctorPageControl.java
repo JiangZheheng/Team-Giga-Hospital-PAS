@@ -23,6 +23,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * This package controls the doctor page
+ * 
+ *
+ */
 public class DoctorPageControl implements Initializable {
 
 	/**
@@ -54,7 +59,9 @@ public class DoctorPageControl implements Initializable {
 	 */
 	@FXML
 	private TableColumn<Patient, String> last_name;
-
+	/**
+	 * Table column to display waiting time
+	 */
 	@FXML
 	private TableColumn<Patient, Long> waitingTime;
 
@@ -344,9 +351,10 @@ public class DoctorPageControl implements Initializable {
 
 		stage.close();
 	}
-	
+
 	/**
 	 * On click event to show the paitents being treated in situ
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -372,9 +380,11 @@ public class DoctorPageControl implements Initializable {
 
 		stage.close();
 	}
-	
+
 	/**
-	 * On click event for the second insitu button to show the user the insitu treatment going on 
+	 * On click event for the second insitu button to show the user the insitu
+	 * treatment going on
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -575,8 +585,8 @@ public class DoctorPageControl implements Initializable {
 	}
 
 	/**
-	 * Upon clicking the recategorise patient button the doctor is redirected
-	 * to the search patient page
+	 * Upon clicking the recategorise patient button the doctor is redirected to
+	 * the search patient page
 	 * 
 	 * @param event
 	 */

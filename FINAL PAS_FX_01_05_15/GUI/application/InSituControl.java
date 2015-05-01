@@ -17,41 +17,74 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+/**
+ * The class controls the In Situ page
+ * 
+ * @author Paul
+ *
+ */
 public class InSituControl implements Initializable {
-
-	public static InSitu inSitu ;
-
+	/**
+	 * static var declaration for inSitu
+	 */
+	public static InSitu inSitu;
+	/**
+	 * declaration of patient from patient class
+	 */
 	private Patient patient;
+	/**
+	 * declaration of telephone text area
+	 */
 	@FXML
 	private TextArea telephoneTextArea1;
-
+	/**
+	 * declaration of label for first name
+	 */
 	@FXML
 	private Label firstName1;
-
+	/**
+	 * declaration of label for blood group
+	 */
 	@FXML
 	private Label bloodGroup1;
-
+	/**
+	 * declaration of button for back
+	 */
 	@FXML
 	private Button back;
-
+	/**
+	 * declaration of last name text area
+	 */
 	@FXML
 	private TextArea lastNameTextArea1;
-
+	/**
+	 * declaration of text area for text box 21
+	 */
 	@FXML
 	private TextArea textBox21;
-
+	/**
+	 * declaration of allergies text area
+	 */
 	@FXML
 	private TextArea allergiesTextArea1;
-
+	/**
+	 * declaration of label for last name
+	 */
 	@FXML
 	private Label lastName1;
-
+	/**
+	 * declaration of button for discharge patient
+	 */
 	@FXML
 	private Button dischargePatient1;
-
+	/**
+	 * declaration for log out button
+	 */
 	@FXML
 	private Button logOut1;
-
+	/**
+	 * declaration of triage cat label
+	 */
 	@FXML
 	private Label triageCategory1;
 
@@ -110,7 +143,8 @@ public class InSituControl implements Initializable {
 	private Label allergies1;
 
 	/**
-	 * Event to log out the user on the click of the log out button 
+	 * Event to log out the user on the click of the log out button
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -138,7 +172,8 @@ public class InSituControl implements Initializable {
 	}
 
 	/**
-	 * Method to discharge the patient on click of button 
+	 * Method to discharge the patient on click of button
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -165,7 +200,8 @@ public class InSituControl implements Initializable {
 	}
 
 	/**
-	 * Alloocates extra time to the patient when clicked by doctor 
+	 * Alloocates extra time to the patient when clicked by doctor
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -174,7 +210,8 @@ public class InSituControl implements Initializable {
 	}
 
 	/**
-	 * Closes the current window 
+	 * Closes the current window
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -201,7 +238,7 @@ public class InSituControl implements Initializable {
 	}
 
 	/**
-	 * launches the page 
+	 * launches the page
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -222,7 +259,7 @@ public class InSituControl implements Initializable {
 
 							@Override
 							public void run() {
-								patient=inSitu.getPatient();
+								patient = inSitu.getPatient();
 								refreshPatientInformation();
 
 							}
@@ -238,9 +275,9 @@ public class InSituControl implements Initializable {
 		myThread.setDaemon(true);
 		myThread.start();
 	}
-	
+
 	/**
-	 * refreshes patient information on the screen for the user 
+	 * refreshes patient information on the screen for the user
 	 */
 
 	private void refreshPatientInformation() {
@@ -261,10 +298,10 @@ public class InSituControl implements Initializable {
 							.getTriage());
 				}
 			}
-			String time = setTime(inSitu.getTimeOutOfInSitu()
-					.getTime() - new Date().getTime());
+			String time = setTime(inSitu.getTimeOutOfInSitu().getTime()
+					- new Date().getTime());
 			timer1.setText(time);
-		}else{
+		} else {
 			nhsNumberTextArea.setText("");
 			titleTextArea1.setText("");
 			firstNameTextArea1.setText("");
@@ -279,7 +316,9 @@ public class InSituControl implements Initializable {
 	}
 
 	/**
-	 * Method to set the time for the patient object entering the treatment rooms 
+	 * Method to set the time for the patient object entering the treatment
+	 * rooms
+	 * 
 	 * @param time
 	 * @return
 	 */

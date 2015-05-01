@@ -23,54 +23,84 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 /**
- * 
- * @author Clare O'Toole
+ * This class controls the hospital manager page
+ *
  *
  */
 public class HospitalManagerPageControl implements Initializable {
-
+	/**
+	 * Displays table column for allergies
+	 */
 	@FXML
 	private TableColumn<Patient, String> allergies;
-
+	/**
+	 * Displays table column for address
+	 */
 	@FXML
 	private TableColumn<Patient, String> address;
-
+	/**
+	 * Displays table column for nhs number
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> nhs_number;
-
+	/**
+	 * Displays table view
+	 */
 	@FXML
 	private TableView<Patient> tableView;
-
+	/**
+	 * Displays table column for last name
+	 */
 	@FXML
 	private TableColumn<Patient, String> last_name;
-
+	/**
+	 * Displays table column for waiting time
+	 */
 	@FXML
 	private TableColumn<Patient, Long> waitingTime;
-
+	/**
+	 * Displays table column for telephone
+	 */
 	@FXML
 	private TableColumn<Patient, String> telephone;
-
+	/**
+	 * Displays table column for title
+	 */
 	@FXML
 	private TableColumn<Patient, String> title;
-
+	/**
+	 * declaration of log out button
+	 */
 	@FXML
 	private Button logOut;
-
+	/**
+	 * Displays table column for blood group
+	 */
 	@FXML
 	private TableColumn<Patient, String> blood_group;
-
+	/**
+	 * Displays table column for first name
+	 */
 	@FXML
 	private TableColumn<Patient, String> first_name;
-
+	/**
+	 * Displays table column for triage
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> triage;
-
+	/**
+	 * declaration of staff button
+	 */
 	@FXML
 	private Button staff;
-
+	/**
+	 * declaration of button for treatment rooms
+	 */
 	@FXML
 	private Button treatmentRooms;
-
+	/**
+	 * declaration of label for timer
+	 */
 	@FXML
 	private Label timer;
 
@@ -116,7 +146,9 @@ public class HospitalManagerPageControl implements Initializable {
 	 */
 	private void refresh() {
 		refreshTable();
-		timer.setText(calculateAverageWaitingTime());
+		String showTime = showTime(GUIMain.sortPatientQueue
+				.calculateAverageWaitingTime(GUIMain.patientQueue));
+		timer.setText(showTime);
 
 	}
 
@@ -150,7 +182,7 @@ public class HospitalManagerPageControl implements Initializable {
 	}
 
 	/**
-	 * Log out of system
+	 * Display treatment rooms
 	 * 
 	 * @param event
 	 */
@@ -179,7 +211,7 @@ public class HospitalManagerPageControl implements Initializable {
 	}
 
 	/**
-	 * Log out of system
+	 * launches all staff view
 	 * 
 	 * @param event
 	 */
@@ -305,6 +337,26 @@ public class HospitalManagerPageControl implements Initializable {
 			tableView.setItems(null);
 		}
 	}
+	/**
+	 * method to show time
+	 * @param time
+	 * @return
+	 */
+	private String showTime(long time) {
+		String showTime = "00:00";
+		if (time != 0) {
+			long seconds = time / 1000;
+			if (seconds < 60) {
+				showTime = ("00:" + String.format("%02d", seconds));
+			} else if (seconds >= 60 && seconds < 3600) {
+				showTime = (String.format("%02d:", seconds / 60) + String
+						.format("%02d", seconds % 60));
+			} else {
+				showTime = ("More than one hour");
+			}
+		}
+		return showTime;
 
-	
+	}
+
 }

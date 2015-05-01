@@ -331,26 +331,14 @@ public class SortPatientQueue {
 		return null;
 	}
 
-	public String calculateAverageWaitingTime() {
+	public long calculateAverageWaitingTime(List<Patient> patients) {
 		long totalTime = 0;
 		long averageTime = 0;
-		String showTime = "00:00";
-		for (Patient patient : GUIMain.patientQueue) {
+		for (Patient patient : patients) {
 			totalTime += patient.getWaitingTime();
 		}
-		averageTime = totalTime / GUIMain.patientQueue.size();
-		if (averageTime != 0) {
-			long seconds = averageTime / 1000;
-			if (seconds < 60) {
-				showTime = ("00:" + String.format("%02d", seconds));
-			} else if (seconds >= 60 && seconds < 3600) {
-				showTime = (String.format("%02d:", seconds / 60) + String
-						.format("%02d", seconds % 60));
-			} else {
-				showTime = ("More than one hour");
-			}
-		}
-		return showTime;
+		averageTime = totalTime / patients.size();
+		return averageTime;
 	}
 
 }
