@@ -12,7 +12,7 @@ import application.ICategorise;
 import application.INurseTriage;
 import application.NurseTriage;
 import application.Patient;
-import application.SMSAlerts;
+import application.ManagerSMSAlerts;
 import application.SortPatientQueue;
 import application.Triage;
 import javafx.collections.FXCollections;
@@ -33,7 +33,7 @@ import javafx.util.Callback;
 
 public class AlterTriageControl implements Initializable {
 
-	private SMSAlerts smsAlert=new SMSAlerts();
+	private ManagerSMSAlerts smsAlert=new ManagerSMSAlerts();
 	/**
 	 * declaration of nurseTriage
 	 */

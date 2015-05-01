@@ -17,17 +17,6 @@ import javax.mail.internet.AddressException;
  *
  */
 public class SortPatientQueue {
-
-	/**
-	 * creating an instance of Manager Email alerts
-	 */
-	private ManagerEmailAlert managerEmailAlert = new ManagerEmailAlert();
-
-	/**
-	 * creating an instance of the SMSAlerts Class to be called
-	 */
-	private SMSAlerts smsAlerts = new SMSAlerts();
-
 	
 	public InSitu insitu=new InSitu();
 
@@ -51,18 +40,23 @@ public class SortPatientQueue {
 		if (patientQueue.size() <= Limits.PATIENT_LIMIT_IN_QUEUE) {
 
 			// find the longest waiting time of the patients in the queue
-			long longestWaitingTime = 0;
-
+			long averageWaitingTime = 0;
+			long totalWaitingTime = 0;
+			
 			for (Patient patient : GUIMain.patientQueue) {
-				if (patient.getWaitingTime() > longestWaitingTime) {
-					longestWaitingTime = patient.getWaitingTime() / 1000 / 60;
+				
+				for (int count = 0; count<=patientQueue.size(); count++){
+					totalWaitingTime += patient.getWaitingTime();
+				}
+				{
+					averageWaitingTime = totalWaitingTime / patientQueue.size() / 1000 / 60;
 				}
 			}
-			if (longestWaitingTime >= 0 && longestWaitingTime < 10) {
+			if (averageWaitingTime >= 0 && averageWaitingTime < 10) {
 				status = 1;
-			} else if (longestWaitingTime >= 10 && longestWaitingTime < 20) {
+			} else if (averageWaitingTime >= 10 && averageWaitingTime < 20) {
 				status = 2;
-			} else if (longestWaitingTime >= 20) {
+			} else if (averageWaitingTime >= 20) {
 				status = 3;
 			} else if (GUIMain.patientQueue.size() == Limits.PATIENT_LIMIT_IN_QUEUE) {
 				status = 4;
@@ -93,8 +87,10 @@ public class SortPatientQueue {
 	 * @throws MessagingException
 	 * @throws AddressException
 	 */
-	public void thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue)
+	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue)
 			throws AddressException, MessagingException {
+		
+		boolean twoPatientsWaiting = false;
 
 		// initialising long to get the patient time in the queue
 		long patientTimeInQueue = 0;
@@ -118,14 +114,13 @@ public class SortPatientQueue {
 					* Limits.MULTIPLY_MINUTES_TO_SECONDS) {
 				counter++;
 				if (counter == 2) {
-					managerEmailAlert
-							.generateAndSendEmailPatientsWaitingThirtyMinutes();
-					
-
+					twoPatientsWaiting = true;
+				} else {
+					twoPatientsWaiting = false;
 				}
 
-			}
-		}
+			} 
+		} return twoPatientsWaiting;
 
 	}
 
@@ -145,26 +140,6 @@ public class SortPatientQueue {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * method to redirect a non emergency patient to the nearest hospital if the
-	 * queue reached maximum capacity
-	 * 
-	 * @param patient
-	 */
-	public void sendToNearestHospital(LinkedList<Patient> patientQueue,
-			Patient patient) {
-
-		// if statement to check if the Triage Category as an integer value is
-		// equal to the Emergency level
-		// if they patient is not an emergency patient they are redirected to
-		// the nearest hospital - to be implemented in the calculate queue size
-		// method
-
-			managerEmailAlert.sendSSMSManagerOnCallFullyEngaged();
-			
-
 	}
 
 	/**

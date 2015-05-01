@@ -11,7 +11,7 @@ import application.GUIMain;
 import application.HospitalPASException;
 import application.NurseTriage;
 import application.Patient;
-import application.SMSAlerts;
+import application.ManagerSMSAlerts;
 import application.SortPatientQueue;
 import application.Triage;
 import javafx.collections.FXCollections;
@@ -38,7 +38,7 @@ public class SetTriageControl implements Initializable {
 	/**
 	 * 
 	 */
-	SMSAlerts smsAlert = new SMSAlerts();
+	ManagerSMSAlerts smsAlert = new ManagerSMSAlerts();
 	
 	/**
 	 * declaration of the list of patient needed to be triaged
