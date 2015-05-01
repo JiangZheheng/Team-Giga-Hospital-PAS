@@ -14,13 +14,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-
 
 /**
  * 
@@ -29,51 +29,51 @@ import javafx.util.Callback;
  */
 public class HospitalManagerPageControl implements Initializable {
 
-	
-	 @FXML
-	    private TableColumn<Patient, String> allergies;
+	@FXML
+	private TableColumn<Patient, String> allergies;
 
-	    @FXML
-	    private TableColumn<Patient, String> address;
+	@FXML
+	private TableColumn<Patient, String> address;
 
-	    @FXML
-	    private TableColumn<Patient, Integer> nhs_number;
+	@FXML
+	private TableColumn<Patient, Integer> nhs_number;
 
-	    @FXML
-	    private TableView<Patient> tableView;
+	@FXML
+	private TableView<Patient> tableView;
 
-	    @FXML
-	    private TableColumn<Patient, String> last_name;
+	@FXML
+	private TableColumn<Patient, String> last_name;
 
-	    @FXML
-	    private TableColumn<Patient, Long> waitingTime;
+	@FXML
+	private TableColumn<Patient, Long> waitingTime;
 
-	    @FXML
-	    private TableColumn<Patient, String> telephone;
+	@FXML
+	private TableColumn<Patient, String> telephone;
 
-	    @FXML
-	    private TableColumn<Patient, String> title;
+	@FXML
+	private TableColumn<Patient, String> title;
 
-	    @FXML
-	    private Button logOut;
+	@FXML
+	private Button logOut;
 
+	@FXML
+	private TableColumn<Patient, String> blood_group;
 
-	    @FXML
-	    private TableColumn<Patient, String> blood_group;
+	@FXML
+	private TableColumn<Patient, String> first_name;
 
-	    @FXML
-	    private TableColumn<Patient, String> first_name;
+	@FXML
+	private TableColumn<Patient, Integer> triage;
 
-	    @FXML
-	    private TableColumn<Patient, Integer> triage;
-	    
-	    @FXML
-	    private Button staff;
-	    
-	    @FXML
-	    private Button treatmentRooms;
+	@FXML
+	private Button staff;
 
-	
+	@FXML
+	private Button treatmentRooms;
+
+	@FXML
+	private Label timer;
+
 	/**
 	 * Method to launch the java FX
 	 */
@@ -104,7 +104,7 @@ public class HospitalManagerPageControl implements Initializable {
 		});
 		myThread.setDaemon(true);
 		myThread.start();
-		
+
 	}
 
 	/**
@@ -116,9 +116,10 @@ public class HospitalManagerPageControl implements Initializable {
 	 */
 	private void refresh() {
 		refreshTable();
+		timer.setText(calculateAverageWaitingTime());
 
 	}
-	
+
 	/**
 	 * Log out of system
 	 * 
@@ -147,8 +148,7 @@ public class HospitalManagerPageControl implements Initializable {
 
 		stage.close();
 	}
-	
-	
+
 	/**
 	 * Log out of system
 	 * 
@@ -177,10 +177,7 @@ public class HospitalManagerPageControl implements Initializable {
 
 		stage.close();
 	}
-	
-	
-	
-	
+
 	/**
 	 * Log out of system
 	 * 
@@ -209,9 +206,9 @@ public class HospitalManagerPageControl implements Initializable {
 
 		stage.close();
 	}
-	
+
 	/**
-	 * Method to refresh the table on the page 
+	 * Method to refresh the table on the page
 	 */
 	private void refreshTable() {
 		if (!GUIMain.patientQueue.isEmpty()) {
@@ -250,12 +247,14 @@ public class HospitalManagerPageControl implements Initializable {
 						@Override
 						protected void updateItem(Integer item, boolean empty) {
 							super.updateItem(item, empty);
-							
-							if (item!=null) {
-								for(int loop=0;loop<Triage.values().length;loop++){
-								if(item==Triage.values()[loop].getLevel()){
-									setText(Triage.values()[loop].getTriage());
-								}
+
+							if (item != null) {
+								for (int loop = 0; loop < Triage.values().length; loop++) {
+									if (item == Triage.values()[loop]
+											.getLevel()) {
+										setText(Triage.values()[loop]
+												.getTriage());
+									}
 								}
 							}
 						}
@@ -263,7 +262,9 @@ public class HospitalManagerPageControl implements Initializable {
 				}
 			});
 
-			waitingTime.setCellValueFactory(new PropertyValueFactory<Patient,Long>("waitingTime"));
+			waitingTime
+					.setCellValueFactory(new PropertyValueFactory<Patient, Long>(
+							"waitingTime"));
 			waitingTime
 					.setCellFactory(new Callback<TableColumn<Patient, Long>, TableCell<Patient, Long>>() {
 
@@ -304,4 +305,6 @@ public class HospitalManagerPageControl implements Initializable {
 			tableView.setItems(null);
 		}
 	}
+
+	
 }

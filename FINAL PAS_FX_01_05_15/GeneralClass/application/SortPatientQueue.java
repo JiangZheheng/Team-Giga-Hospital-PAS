@@ -48,8 +48,12 @@ public class SortPatientQueue {
 				}
 				{
 					averageWaitingTime = totalWaitingTime / patientQueue.size()
+<<<<<<< HEAD
 							/ Limits.MILLISECS_TO_MINS
 							/ Limits.MULTIPLY_MINUTES_TO_SECONDS;
+=======
+							/ 1000 / 60;
+>>>>>>> branch 'master' of https://github.com/JiangZheheng/Team-Giga-Hospital-PAS.git
 				}
 			}
 			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT && averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
@@ -328,6 +332,28 @@ public class SortPatientQueue {
 			}
 		}
 		return null;
+	}
+
+	public String calculateAverageWaitingTime() {
+		long totalTime = 0;
+		long averageTime = 0;
+		String showTime = "00:00";
+		for (Patient patient : GUIMain.patientQueue) {
+			totalTime += patient.getWaitingTime();
+		}
+		averageTime = totalTime / GUIMain.patientQueue.size();
+		if (averageTime != 0) {
+			long seconds = averageTime / 1000;
+			if (seconds < 60) {
+				showTime = ("00:" + String.format("%02d", seconds));
+			} else if (seconds >= 60 && seconds < 3600) {
+				showTime = (String.format("%02d:", seconds / 60) + String
+						.format("%02d", seconds % 60));
+			} else {
+				showTime = ("More than one hour");
+			}
+		}
+		return showTime;
 	}
 
 }

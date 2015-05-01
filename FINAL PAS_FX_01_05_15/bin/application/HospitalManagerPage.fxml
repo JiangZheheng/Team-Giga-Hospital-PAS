@@ -43,13 +43,21 @@
 			</children>
 		</AnchorPane>
 		<MenuBar layoutX="0.0" layoutY="0.0" prefHeight="31.0" prefWidth="1020.0" />
-		<Button fx:id="logout" layoutX="847.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickLogOut" prefHeight="38.0" prefWidth="131.0" text="Logout" />
+		<Button fx:id="logOut" layoutX="847.0" layoutY="570.0" mnemonicParsing="false" onAction="#onClickLogOut" prefHeight="38.0" prefWidth="131.0" text="Logout" />
       <Button fx:id="treatmentRooms" layoutX="789.0" layoutY="508.0" mnemonicParsing="false" onAction="#onClickTreatmentsRooms" prefHeight="53.0" prefWidth="189.0" text="Treatment Rooms" />
       <Button fx:id="staff" layoutX="789.0" layoutY="434.0" mnemonicParsing="false" onAction="#onClickStaff" prefHeight="53.0" prefWidth="189.0" text="View all Staff" />
-      <TextArea fx:id="averageWaitingTime" layoutX="689.0" layoutY="152.0" prefHeight="170.0" prefWidth="287.0" />
+      <TextArea fx:id="averageWaitingTime" editable="false" layoutX="689.0" layoutY="152.0" prefHeight="170.0" prefWidth="287.0">
+         <font>
+            <Font size="43.0" />
+         </font></TextArea>
       <Label layoutX="732.0" layoutY="125.0" text="Average Waiting Time">
          <font>
             <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="timer" alignment="CENTER" layoutX="793.0" layoutY="207.0" prefHeight="61.0" prefWidth="108.0" text="00:00" textAlignment="CENTER">
+         <font>
+            <Font size="42.0" />
          </font>
       </Label>
 	</children>
