@@ -53,6 +53,9 @@ public class GUIMain extends Application {
 
 	}
 
+	/**
+	 * Sets the stage for the JavaFX to run on 
+	 */
 	public void start(Stage primaryStage) {
 		initialise();
 		try {
@@ -74,6 +77,9 @@ public class GUIMain extends Application {
 
 	}
 
+	/**
+	 * Thread to manage the alerts 
+	 */
 	private void alertThread() {
 		System.out.println("alertThread");
 		Thread alertThread = new Thread() {
@@ -172,6 +178,9 @@ public class GUIMain extends Application {
 		queueThread.start();
 	}
 
+	/**
+	 * Thread to refresh the queue constantly 
+	 */
 	public void refresh() {
 		// nurseTriage.putPatientIntoQueue(patientQueue, patient);
 
@@ -201,6 +210,10 @@ public class GUIMain extends Application {
 
 	}
 
+	/**
+	 * Method to pull the staff details from the database 
+	 * @return
+	 */
 	public static ArrayList<Staff> getAllStaff() {
 		ArrayList<Staff> allStaff = new ArrayList<Staff>();
 		String url = "jdbc:mysql://web2.eeecs.qub.ac.uk/40108307";

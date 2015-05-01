@@ -575,7 +575,7 @@ public class DoctorPageControl implements Initializable {
 	}
 
 	/**
-	 * Upon clicking the recategorise patient menu item the doctor is redirected
+	 * Upon clicking the recategorise patient button the doctor is redirected
 	 * to the search patient page
 	 * 
 	 * @param event
