@@ -353,7 +353,7 @@ public class DoctorPageControl implements Initializable {
 		try {
 			InSituControl.inSitu = GUIMain.inSitus.get(0);
 			root = FXMLLoader.load(getClass().getResource(
-					"/application/TreatmentRoom1.fxml"));
+					"/application/InSitu.fxml"));
 			Scene scene = new Scene(root, 1020, 622);
 			newStage.setTitle("Treatment Room 5");
 			newStage.setScene(scene);
@@ -377,7 +377,7 @@ public class DoctorPageControl implements Initializable {
 		try {
 			InSituControl.inSitu = GUIMain.inSitus.get(1);
 			root = FXMLLoader.load(getClass().getResource(
-					"/application/TreatmentRoom1.fxml"));
+					"/application/InSitu.fxml"));
 			Scene scene = new Scene(root, 1020, 622);
 			newStage.setTitle("Treatment Room 5");
 			newStage.setScene(scene);
