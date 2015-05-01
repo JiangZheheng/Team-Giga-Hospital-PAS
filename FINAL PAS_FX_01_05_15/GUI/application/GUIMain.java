@@ -115,10 +115,10 @@ public class GUIMain extends Application {
 
 							if (sortPatientQueue
 									.calculateQueueSize(GUIMain.patientQueue)) {
-								delay = false;
+								delay = true;
 							}
 						}
-						delay = true;
+						delay = false;
 						Thread.sleep(10000 * 600);
 					}
 				} catch (InterruptedException e) {
@@ -156,7 +156,7 @@ public class GUIMain extends Application {
 								}
 							}
 						}
-						delay = true;
+						delay = false;
 						Thread.sleep(10000 * 600);
 					}
 				} catch (InterruptedException e) {
