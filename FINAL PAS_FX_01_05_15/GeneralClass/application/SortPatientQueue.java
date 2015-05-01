@@ -48,12 +48,9 @@ public class SortPatientQueue {
 				}
 				{
 					averageWaitingTime = totalWaitingTime / patientQueue.size()
-<<<<<<< HEAD
 							/ Limits.MILLISECS_TO_MINS
 							/ Limits.MULTIPLY_MINUTES_TO_SECONDS;
-=======
-							/ 1000 / 60;
->>>>>>> branch 'master' of https://github.com/JiangZheheng/Team-Giga-Hospital-PAS.git
+
 				}
 			}
 			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT && averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
