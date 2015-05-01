@@ -32,6 +32,11 @@ public class Limits {
 	 * minutes
 	 */
 	public static final int MULTIPLY_MINUTES_TO_SECONDS = 60;
+	
+	/**
+	 * convert milliseconds to minutes
+	 */
+	public static final int MILLISECS_TO_MINS = 1000;
 
 	/**
 	 * Constant to determine the number of minutes a patient has been waiting in
@@ -59,5 +64,50 @@ public class Limits {
 	 * Constant to set the extended time to be allocated
 	 */
 	public final static int EXTENDED_TIME = 5;
+	
+	/**
+	 * time to allow patient in time to be extended
+	 */
 	public final static int TIME_IN_INSITU=15;
+	
+	/**
+	 * constant for status code one - to be used when calculating average queue time
+	 */
+	public static final int STATUS_CODE_ONE = 1;
+	
+	/**
+	 * constant for status code two - to be used when calculating average queue time
+	 */
+	public static final int STATUS_CODE_TWO = 2;
+	
+	/**
+	 * constant for status code three - to be used when calculating average queue time
+	 */
+	public static final int STATUS_CODE_THREE = 3;
+	
+	/**
+	 * constant for status code four - to be used when calculating average queue time
+	 */
+	public static final int STATUS_CODE_FOUR = 4;
+	
+	/**
+	 * constant for lower limit of status code one - to be used when calculating average queue time
+	 */
+	public static final int STATUS_ONE_LOWER_LIMIT = 0;
+	
+	/**
+	 * constant for upper limit of status code one - to be used when calculating average queue time
+	 */
+	public static final int STATUS_ONE_UPPER_LIMIT = 10;
+	
+	/**
+	 * constant for upper limit of status code two - to be used when calculating average queue time
+	 */
+	public static final int STATUS_TWO_UPPER_LIMIT = 20;
+	
+	
+	
+	
+	
+	
 }
