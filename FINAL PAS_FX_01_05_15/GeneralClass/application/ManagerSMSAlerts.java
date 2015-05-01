@@ -1,7 +1,7 @@
 package application;
 
 /**
- * @author Hannah McDade, Clare O'Toole, Catherine Geddis
+ * Class to manage the SMS Alerts for the manager 
  */
 
 import java.io.BufferedReader;

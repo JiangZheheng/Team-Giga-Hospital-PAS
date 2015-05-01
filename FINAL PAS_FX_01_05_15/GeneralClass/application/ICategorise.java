@@ -7,7 +7,7 @@ import java.util.Queue;
  * interface containing the methods to allow both the Doctor and the TriageNurse
  * to categorise/recategorise a patient's condition
  * 
- * @author Hannah, Clare, Catherine
+ * 
  *
  */
 

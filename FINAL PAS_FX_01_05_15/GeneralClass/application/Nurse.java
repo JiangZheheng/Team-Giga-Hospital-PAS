@@ -3,7 +3,7 @@ package application;
 /**
  * class to contain the details of the nurse
  * 
- * @author Fin
+ * 
  *
  */
 

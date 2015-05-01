@@ -10,7 +10,7 @@ import java.util.List;
  *
  */
 
-public class NurseTriage extends Staff implements INurseTriage, IJDoe,
+public class NurseTriage extends Staff implements INurseTriage, 
 		ICategorise {
 
 	/**
@@ -139,35 +139,6 @@ public class NurseTriage extends Staff implements INurseTriage, IJDoe,
 		}
 
 		return inQueue;
-	}
-
-
-	/**
-	 * method to allow the Triage Nurse to allocate emergency details to the
-	 * unconscious patient
-	 * 
-	 * @param patient
-	 */
-	@Override
-	public void allocateJDoeDetails(LinkedList <Patient> patientQueue, Patient patient, int GenderSwap) {
-
-		
-		if (GenderSwap == 1) {
-			patient.setFirstName("Jane");
-			patient.setLastName("Doe");
-			patient.setGender('F');
-			patient.getEmergencyNHSNumber();
-			patient.setTriageCategory(Triage.EMERGENCY);
-			
-
-		} else if (GenderSwap == 2) {
-			patient.setFirstName("John");
-			patient.setLastName("Doe");
-			patient.setGender('M');
-			patient.getEmergencyNHSNumber();
-			patient.setTriageCategory(Triage.EMERGENCY);
-			
-		}
 	}
 
 	/**

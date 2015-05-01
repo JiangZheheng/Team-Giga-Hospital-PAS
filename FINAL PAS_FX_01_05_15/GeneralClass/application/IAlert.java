@@ -21,7 +21,7 @@ import javax.mail.internet.AddressException;
 
 /**
  * Interface to manage the Alerts 
- * @author Hannah, Catherine, Clare
+ *
  *
  */
 public interface IAlert {
