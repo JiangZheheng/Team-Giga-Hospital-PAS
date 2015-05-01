@@ -122,6 +122,10 @@ public class ReceptionistPageControl implements Initializable {
 	@FXML
 	private TableView<Patient> nextPatient;
 
+	/**
+	 * Patient search on click event 
+	 * @param event
+	 */
 	@FXML
 	void patienSearchOnClick(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -203,7 +207,7 @@ public class ReceptionistPageControl implements Initializable {
 
 	}
 
-	/*
+	/**
 	 * Open new patient page
 	 */
 	@FXML
