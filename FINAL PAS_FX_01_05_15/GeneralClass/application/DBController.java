@@ -15,7 +15,7 @@ import java.util.List;
 public class DBController {
 
 	/**
-	 * method to return the AllStaffList for the Hspital Manager GUI screen
+	 * method to return the AllStaffList for the Hospital Manager GUI screen
 	 * @return
 	 */
 	private static List<Staff> getAllStaff() {
@@ -30,15 +30,17 @@ public class DBController {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
 		}
-		// making the connection
+		// making the connection to the database server
 		try {
 			con = DriverManager.getConnection(url, DatabaseENums.DATABASEUSERNAME.getDatabase(), DatabaseENums.DATABASEPASSWORD.getDatabase());
 			// create a statement object
 			stmt = con.createStatement();
 			// supply the statement object with a string to execute
 			Staff staff = new Staff();
+			//calling the select query from the DatabaseENums to display all staff details 
 			ResultSet rs = stmt.executeQuery(DatabaseENums.DATABASESTAFFSELECTQUERY.getDatabase());
 			while (rs.next()) {
+				//parse method used to convert the integer value of the StaffID to a String  
 				staff.setStaffID(Integer.parseInt(rs.getString(DatabaseENums.DATABASESTAFFID.getDatabase())));
 				staff.setTitle(rs.getString(DatabaseENums.DATABASESTAFFTITLE.getDatabase()));
 				staff.setFirstName(rs.getString(DatabaseENums.DATABASESTAFFFIRSTNAME.getDatabase()));

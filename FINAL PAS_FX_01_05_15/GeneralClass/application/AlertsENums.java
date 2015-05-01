@@ -1,9 +1,7 @@
 package application;
 
 /**
- * Enums for the Alerts messages to be sent to the relevant members of staff
- * 
- * @author Hannah
+ * Enums to hold the content to be used in the SMS Alerts Classes for the On Call Team and the Hospital Manager
  *
  */
 
@@ -17,16 +15,31 @@ public enum AlertsENums {
 			"41b6105030728d7adeb182a5c5700c8343b9d307"), SMSSENDER(
 			"hospitalPAS"), SMSCONNECTION("https://api.txtlocal.com/send/?");
 
+	/**
+	 * variable to hold the Alert converted to a String value
+	 */
 	private String alert;
 
+	/**
+	 * Constructor with arguments for the Alerts Enums
+	 * @param alert
+	 */
 	private AlertsENums(String alert) {
 		this.alert = alert;
 	}
 
+	/**
+	 * method to get the Alert as a String value
+	 * @return
+	 */
 	public String getAlert() {
 		return alert;
 	}
 
+	/**
+	 * method to set the Alert as a String value
+	 * @param alert
+	 */
 	public void setAlert(String alert) {
 		this.alert = alert;
 	}
