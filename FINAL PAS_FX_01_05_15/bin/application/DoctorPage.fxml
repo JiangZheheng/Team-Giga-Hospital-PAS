@@ -26,11 +26,11 @@
 		<Button fx:id="logOut" layoutX="815.0" layoutY="529.0" mnemonicParsing="false" onAction="#onClickLogOut" prefHeight="38.0" prefWidth="137.0" text="Logout" />
 		<TableView fx:id="tableView" layoutX="62.0" layoutY="154.0" prefHeight="392.0" prefWidth="565.0">
 			<columns>
-				<TableColumn fx:id="nhs_number" prefWidth="109.0" text="NHS_number" />
-				<TableColumn fx:id="first_name" prefWidth="107.0" text="first_name" />
-				<TableColumn fx:id="last_name" prefWidth="116.0" text="last_name" />
-				<TableColumn fx:id="triage" prefWidth="65.0" text="triage" />
-				<TableColumn fx:id="waitingTime" prefWidth="167.0" text="waitingTime" />
+				<TableColumn fx:id="nhs_number" prefWidth="109.0" text="NHS Number" />
+				<TableColumn fx:id="first_name" prefWidth="107.0" text="First Name" />
+				<TableColumn fx:id="last_name" prefWidth="116.0" text="Last Name" />
+				<TableColumn fx:id="triage" prefWidth="65.0" text="Triage" />
+				<TableColumn fx:id="waitingTime" prefWidth="167.0" text="WaitingTime" />
 				<TableColumn fx:id="address" prefWidth="309.0" text="address" />
 				<TableColumn fx:id="telephone" minWidth="5.0" prefWidth="100.0" text="telephone" />
 				<TableColumn fx:id="allergies" prefWidth="100.0" text="allergies" />
@@ -38,5 +38,15 @@
 				<TableColumn fx:id="title" maxWidth="5000.0" minWidth="10.0" prefWidth="77.0" text="title" />
 			</columns>
 		</TableView>
+      <MenuBar prefHeight="25.0" prefWidth="1020.0">
+        <menus>
+          <Menu fx:id="patientMenu" mnemonicParsing="false" text="Patient">
+            <items>
+              <MenuItem fx:id="searchQueueMenuItem" mnemonicParsing="false" onAction="#onClickSearchQueue" text="Search Queue" />
+                  <MenuItem fx:id="recategorisePatient" mnemonicParsing="false" onAction="#onClickRecategorisePatient" text="Recategorise Patient" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
 	</children>
 </AnchorPane>

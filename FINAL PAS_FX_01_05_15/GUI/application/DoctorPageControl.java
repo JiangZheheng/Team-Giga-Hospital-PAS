@@ -25,66 +25,129 @@ import javafx.util.Callback;
 
 public class DoctorPageControl implements Initializable {
 
+	/**
+	 * Table column to display allergies
+	 */
 	@FXML
 	private TableColumn<Patient, String> allergies;
 
+	/**
+	 * Table column to display address
+	 */
 	@FXML
 	private TableColumn<Patient, String> address;
 
+	/**
+	 * Table column to display nhs number
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> nhs_number;
 
+	/**
+	 * Table view to display Patients in the queue
+	 */
 	@FXML
 	private TableView<Patient> tableView;
 
+	/**
+	 * Table column to display patients last name
+	 */
 	@FXML
 	private TableColumn<Patient, String> last_name;
 
 	@FXML
 	private TableColumn<Patient, Long> waitingTime;
 
+	/**
+	 * Table column to display the patients telephone number
+	 */
 	@FXML
 	private TableColumn<Patient, String> telephone;
 
+	/**
+	 * Table column to display the patients title
+	 */
 	@FXML
 	private TableColumn<Patient, String> title;
 
+	/**
+	 * Table column to display the patients blood group
+	 */
 	@FXML
 	private TableColumn<Patient, String> blood_group;
 
+	/**
+	 * Table column to display the patients first name
+	 */
 	@FXML
 	private TableColumn<Patient, String> first_name;
 
+	/**
+	 * Table column to display the triage category of the patient
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> triage;
 
+	/**
+	 * Menu item to go to alter triage category
+	 */
 	@FXML
 	private MenuItem recategorisePatient;
 
+	/**
+	 * Menu to display patient meni items
+	 */
 	@FXML
 	private Menu patientMenu;
 
+	/**
+	 * Menu item to go to search patient queue
+	 */
 	@FXML
 	private MenuItem searchQueueMenuItem;
 
+	/**
+	 * Button to go to treatment room 1
+	 */
 	@FXML
 	private Button treatmentRoom1;
 
+	/**
+	 * Button to go to treatment room 2
+	 */
 	@FXML
 	private Button treatmentRoom2;
 
+	/**
+	 * Button to go to treatment room 5
+	 */
 	@FXML
 	private Button treatmentRoom5;
 
+	/**
+	 * Button to go to treatment room 3
+	 */
 	@FXML
 	private Button treatmentRoom3;
 
+	/**
+	 * Button to go to treatment room 4
+	 */
 	@FXML
 	private Button treatmentRoom4;
 
+	/**
+	 * Button to go log out
+	 */
 	@FXML
 	private Button logOut;
 
+	/**
+	 * On clicking the log out button the user will logged out and redirected to
+	 * the login page
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickLogOut(ActionEvent event) {
 
@@ -109,6 +172,13 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * On clicking treatment room 1 button the doctor will be redirected to the
+	 * treatment room 1. Which will display the details of the current patient
+	 * who is in the room
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void OnClickTreatmentRoom1(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -135,6 +205,13 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * On clicking treatment room 1 button the doctor will be redirected to the
+	 * treatment room 2. Which will display the details of the current patient
+	 * who is in the room
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickTreatmentRoom2(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -160,6 +237,13 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * On clicking treatment room 1 button the doctor will be redirected to the
+	 * treatment room 3. Which will display the details of the current patient
+	 * who is in the room
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickTreatmentRoom3(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -185,6 +269,13 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * On clicking treatment room 1 button the doctor will be redirected to the
+	 * treatment room 4. Which will display the details of the current patient
+	 * who is in the room
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickTreatmentRoom4(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -210,6 +301,13 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * On clicking treatment room 1 button the doctor will be redirected to the
+	 * treatment room 5. Which will display the details of the current patient
+	 * who is in the room
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickTreatmentRoom5(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -235,6 +333,9 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * Method to initilise thread for the page
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Thread myThread = new Thread(new Runnable() {
@@ -267,16 +368,17 @@ public class DoctorPageControl implements Initializable {
 
 	/**
 	 * the method is used to refresh table, update waiting time of every patient
-	 * in queue and show the Hospital Manager the next patient and the available
+	 * in queue and show the Doctor the next patient and the available
 	 * treatment room
-	 * 
-	 * @author
 	 */
 	private void refresh() {
 		refreshTable();
 
 	}
 
+	/**
+	 * 
+	 */
 	private void refreshTable() {
 		if (!GUIMain.patientQueue.isEmpty()) {
 			ObservableList<Patient> list = FXCollections.observableArrayList();
@@ -373,15 +475,62 @@ public class DoctorPageControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Upon clicking the search queue menu item the doctor is redirected to the search patient page
+	 * @param event
+	 */
+	@FXML
+	void onClickSearchQueue(ActionEvent event) {
 
-    @FXML
-    void onClickSearchQueue(ActionEvent event) {
+		Stage newStage = new Stage();
 
-    }
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource(
+					"/receptionistPage/SearchPatient.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Hospital PAS");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
 
-    @FXML
-    void onClickRecategorisePatient(ActionEvent event) {
+		} catch (IOException e) {
 
-    }
-	
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) treatmentRoom1.getScene().getWindow();
+
+		stage.close();
+
+	}
+
+	/**
+	 * Upon clicking the recategorise patient menu item the doctor is redirected to the search patient page
+	 * @param event
+	 */
+	@FXML
+	void onClickRecategorisePatient(ActionEvent event) {
+
+		Stage newStage = new Stage();
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource(
+					"/receptionistPage/AlterTriage.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Hospital PAS");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) treatmentRoom1.getScene().getWindow();
+
+		stage.close();
+
+	}
+
 }
