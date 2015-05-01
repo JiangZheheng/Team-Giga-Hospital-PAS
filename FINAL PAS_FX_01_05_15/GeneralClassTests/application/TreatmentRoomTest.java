@@ -11,17 +11,26 @@ import org.junit.Test;
 
 public class TreatmentRoomTest {
 
+	/**
+	 * set up test data 
+	 */
 	int roomNumber;
 	boolean vacant, patientTreated;
 	Date timeInTreatmentRoom, timeOutOfTreatmentRoom;
 	Patient patientInTreatmentRoom;
 
+	/**
+	 * Test constructor
+	 */
 	@Test
 	public void testTreatmentRoomDefaultConstructor() {
 		TreatmentRoom treatmentroom = new TreatmentRoom();
 		assertNotNull(treatmentroom);
 	}
 
+	/**
+	 * Test constructor with arguements 
+	 */
 	@Test
 	public void testTimeInTreatmentRoom() {
 		TreatmentRoom treatmentroom = new TreatmentRoom();
@@ -30,6 +39,15 @@ public class TreatmentRoomTest {
 		Date actual = treatmentroom.getTimeInTreatmentRoom();
 		assertEquals(expected, actual);
 	}
+	
+	/**
+	 * test find empty treatment rooms method 
+	 */
+	@Test
+	public void testFindEmptyTreatmentRoom(){
+		
+	}
+	
 /**
  * test of get and set for treatment room number
  */
@@ -40,11 +58,6 @@ public class TreatmentRoomTest {
 		treatmentroom.setRoomNumber(expected);
 		int actual = treatmentroom.getRoomNumber();
 		assertEquals(expected, actual);
-	}
-
-	@Test
-	public void testAllocateExtraTime() {
-		fail("Not yet implemented");
 	}
 
 	/**
@@ -59,10 +72,4 @@ public class TreatmentRoomTest {
 		Patient actual = treatmentroom.getPatientInTreatmentRoom();
 		assertEquals(expected, actual);
 	}
-
-	@Test
-	public void testDischargePatient() {
-		fail("Not yet implemented");
-	}
-
 }
