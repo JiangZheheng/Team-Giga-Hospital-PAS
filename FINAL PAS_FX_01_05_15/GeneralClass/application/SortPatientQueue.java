@@ -7,9 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
-
 /**
  * The comparator class is used to take in the details of the queue and compare
  * waiting times for all patients in the A and E queue. If a patient has been
@@ -87,8 +84,7 @@ public class SortPatientQueue {
 	 * @throws MessagingException
 	 * @throws AddressException
 	 */
-	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue)
-			throws AddressException, MessagingException {
+	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue) {
 		
 		boolean twoPatientsWaiting = false;
 
