@@ -96,18 +96,34 @@ public class InSitu {
 		return patient;
 	}
 
+	/**
+	 * Boolean to get if vacant space available for patient 
+	 * @return
+	 */
 	public boolean isVacant() {
 		return vacant;
 	}
 
+	/**
+	 * Boolean to set if space for patient 
+	 * @param vacant
+	 */
 	public void setVacant(boolean vacant) {
 		this.vacant = vacant;
 	}
 
+	/**
+	 * Method to get time patient enters treatment in situ 
+	 * @return
+	 */
 	public Date getTimeInSitu() {
 		return timeInSitu;
 	}
 
+	/**
+	 * Method to set time patient begins treatment in situ 
+	 * @param timeInSitu
+	 */
 	public void setTimeInSitu(Date timeInSitu) {
 		if(timeInSitu!=null){
 			timeOutOfInSitu=new Date();
@@ -119,13 +135,26 @@ public class InSitu {
 			}
 	}
 
+	/**
+	 * Method to get time patient leaves in situ 
+	 * @return
+	 */
 	public Date getTimeOutOfInSitu() {
 		return timeOutOfInSitu;
 	}
 
+	/**
+	 * Method to set time patient leaves in situ 
+	 * @param timeOutOfInSitu
+	 */
 	public void setTimeOutOfInSitu(Date timeOutOfInSitu) {
 		this.timeOutOfInSitu = timeOutOfInSitu;
 	}
+	
+	/**
+	 * Method to remove patient from queue automatically once treatment is finished 
+	 * @return
+	 */
 	public boolean removePatientFromTreatmentroomAutomatically() {
 		if((this.timeOutOfInSitu.getTime()-new Date().getTime())/1000<2){
 			this.patient.setLeaveTime(new Date());
@@ -139,6 +168,10 @@ public class InSitu {
 		
 	}
 	
+	/**
+	 * Method to control the alerts to the manager 
+	 * @return
+	 */
 	public boolean alertManager(){
 		if((this.timeOutOfInSitu.getTime()-this.getTimeInSitu().getTime())/1000>Limits.TIME_IN_INSITU){
 //			new ManagerSMSAlerts().sendSSMSManagerOnCallFullyEngaged();
@@ -148,6 +181,12 @@ public class InSitu {
 			return false;
 		}
 	}
+	
+	/**
+	 * Method to discharge the patients from the queue 
+	 * @param allPatients
+	 * @param patient
+	 */
 	public void dischargePatient(List<Patient> allPatients,Patient patient){
 		this.setPatient(null);
 		this.setVacant(true);
@@ -155,6 +194,10 @@ public class InSitu {
 		patient.setLeaveTime(new Date());
 		
 	}
+	
+	/**
+	 * Method to allocate extra time to patients 
+	 */
 	public void allocateExtraTime() {
 
 		timeOutOfInSitu.setTime(timeOutOfInSitu.getTime()
