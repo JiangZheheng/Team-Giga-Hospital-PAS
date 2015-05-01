@@ -13,27 +13,34 @@ import org.junit.Test;
 public class DoctorTest {
 
 	// test data
-	String validTitle, invalidTitle, validFirstName, InvalidFirstName,
-			validLastName, invalidLastName, validPassword, InvalidPassword;
+	String validTitle, invalidTitle, validFirstName, invalidFirstName,
+			validLastName, invalidLastName, validPassword, invalidPassword;
 	char validGender, invalidGender;
 	int validStaffID, invalidStaffID;
 
+	/**
+	 * set up test data 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		validTitle = "ValidTitle";
 		invalidTitle = null;
 		validFirstName = "ValidFirstName";
-		InvalidFirstName = null;
+		invalidFirstName = null;
 		validLastName = "ValidLastName";
 		invalidLastName = null;
 		validPassword = "ValidPassword";
-		InvalidPassword = null;
+		invalidPassword = null;
 		validGender = 'F';
 		invalidGender = 'Y';
 		validStaffID = 1001;
 		invalidStaffID = -1;
 	}
 
+	/**
+	 * Default constructor test 
+	 */
 	@Test
 	public void testDoctorDefaultConstructor() {
 		Doctor doctor = new Doctor();
@@ -56,7 +63,27 @@ public class DoctorTest {
 		assertEquals(validPassword, doctor.getPassword());
 	}
 	
+	/**
+	 * testing  constructor with invalid arguments
+	 */
+	@Test
+	public void testDoctorConstructorInvalid(){
+		Doctor doctor = new Doctor(invalidTitle, invalidFirstName, invalidLastName,
+				invalidGender, invalidStaffID, invalidPassword);
+		assertNotNull(doctor);
+		assertEquals(invalidGender, doctor.getGender());
+		assertEquals(invalidTitle, doctor.getTitle());
+		assertEquals(invalidFirstName, doctor.getFirstName());
+		assertEquals(invalidLastName, doctor.getLastName());
+		assertEquals(invalidStaffID, doctor.getStaffID());
+		assertEquals(invalidPassword, doctor.getPassword());
+	}
+	
+	
 
+	/**
+	 * Test catagorise patient method
+	 */
 	@Test
 	public void testCategorisePatient() {
 		Doctor doctor = new Doctor();
@@ -73,6 +100,9 @@ public class DoctorTest {
 		}
 	}
 
+	/**
+	 * Test to recatagorise patient methods 
+	 */
 	@Test
 	public void testRecategorisePatient() {
 		Doctor doctor = new Doctor();
@@ -89,6 +119,9 @@ public class DoctorTest {
 		}
 	}
 
+	/**
+	 * Test the put patient into queue method with a true value 
+	 */
 	@Test
 	public void testPutPatientIntoQueue() {
 		boolean inQueue = true;
@@ -101,6 +134,9 @@ public class DoctorTest {
 		
 	}
 
+	/**
+	 * Test the put patient into queue method with a false value 
+	 */
 	@Test
 	public void testPutPatientIntoQueueFalse() {
 		boolean inQueue = false;
