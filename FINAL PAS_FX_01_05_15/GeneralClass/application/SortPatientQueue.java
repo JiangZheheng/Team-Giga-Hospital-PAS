@@ -218,6 +218,8 @@ public class SortPatientQueue {
 
 		if (treatmentRoom != -1) {
 			
+			
+			
 			patientQueue.addFirst(treatmentRooms.get(treatmentRoom)
 					.getPatientInTreatmentRoom());
 			patientBeingTreated(patient, treatmentRoom, treatmentRooms);
@@ -293,14 +295,17 @@ public class SortPatientQueue {
 			for(InSitu inSitu:inSitus){
 				if(inSitu.isVacant()==true){
 					inSitu.setPatient(patient);
+					inSitu.setTimeInSitu(new Date());
+					inSitu.setVacant(false);
 					
 					throw new HospitalPASException(
 							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
-				}else{
-					throw new HospitalPASException(
-							ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
 				}
+					
+				
 			}
+			throw new HospitalPASException(
+					ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
 			
 		}
 		return true;

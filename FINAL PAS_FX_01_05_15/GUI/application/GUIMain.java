@@ -101,11 +101,6 @@ public class GUIMain extends Application {
 									.calculateQueueSize(GUIMain.patientQueue)){
 								delay=false;
 							}
-							for(InSitu inSitu:inSitus){
-								if(inSitu.isVacant()==false){
-									inSitu.alertManager();
-								}
-							}
 						}
 						delay=true;
 						Thread.sleep(10000*600);
@@ -120,6 +115,44 @@ public class GUIMain extends Application {
 
 		alertThread.setDaemon(true);
 		alertThread.start();
+		
+		System.out.println("alertThread");
+		Thread inSituThread = new Thread() {
+
+			@Override
+			public void run() {
+
+				boolean delay = false;
+
+				try {
+					while (true) {
+						while (!delay) {
+							Thread.sleep(1000);
+							
+//								sortPatientQueue
+//										.thirtyMinuteManagerAlert(patientQueue);
+							for(InSitu inSitu:inSitus){
+								if(inSitu.isVacant()==false){
+
+									if(inSitu.alertManager()){
+										delay=true;
+									}
+								}
+							}
+						}
+						delay=true;
+						Thread.sleep(10000*600);
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		};
+
+		inSituThread.setDaemon(true);
+		inSituThread.start();
 	}
 
 	/**
