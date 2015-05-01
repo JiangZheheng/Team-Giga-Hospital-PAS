@@ -65,8 +65,8 @@ public class GUIMain extends Application {
 			primaryStage.setTitle("FXML Welcome");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
-//			threadStart();
-//			alertThread();
+			threadStart();
+			alertThread();
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
