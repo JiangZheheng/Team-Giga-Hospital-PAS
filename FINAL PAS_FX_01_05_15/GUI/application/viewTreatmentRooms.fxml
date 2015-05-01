@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -8,22 +9,96 @@
 
 <AnchorPane prefHeight="622.0" prefWidth="1020.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.viewTreatmentRoomControl">
 	<children>
-		<ImageView fitHeight="552.0" fitWidth="1020.0" layoutY="51.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
-			<image>
-				<Image url="@hospitalimg.jpg" />
-			</image>
-		</ImageView>
+      <ImageView fitHeight="552.0" fitWidth="1020.0" layoutX="10.0" layoutY="61.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@hospitalimg.jpg" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="testBoxT13" layoutX="437.0" layoutY="230.0" prefHeight="152.0" prefWidth="355.0" />
+      <TextArea fx:id="textBoxT4" layoutX="437.0" layoutY="50.0" prefHeight="152.0" prefWidth="355.0" />
+      <TextArea fx:id="testBoxT12" layoutX="60.0" layoutY="415.0" prefHeight="152.0" prefWidth="355.0" />
+      <TextArea fx:id="testBoxT2" layoutX="60.0" layoutY="231.0" prefHeight="152.0" prefWidth="355.0" />
 		<ImageView fitHeight="150.0" fitWidth="200.0" layoutX="806.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@hscportallogo.gif" />
 			</image>
 		</ImageView>
-      <TableView fx:id="table" layoutX="178.0" layoutY="70.0" prefHeight="200.0" prefWidth="200.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
+      <TextArea fx:id="testBoxT1" layoutX="60.0" layoutY="51.0" prefHeight="152.0" prefWidth="355.0" />
+      <TextField fx:id="nhsNumberTextFieldT1" layoutX="197.0" layoutY="57.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="titleTextFieldT1" layoutX="197.0" layoutY="86.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="firstNameTextFieldT1" layoutX="197.0" layoutY="116.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="lastNameTextFieldT1" layoutX="197.0" layoutY="145.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="triageCategoryT1" layoutX="197.0" layoutY="173.0" prefHeight="25.0" prefWidth="213.0" />
+      <Label fx:id="nhsNumberT1" layoutX="117.0" layoutY="61.0" text="NHS Number" />
+      <Label fx:id="treatmentRoom" layoutX="60.0" layoutY="32.0" text="Treatment Room 1">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleT1" layoutX="165.0" layoutY="90.0" text="Title" />
+      <Label fx:id="firstNameT1" layoutX="130.0" layoutY="120.0" text="First Name" />
+      <Label fx:id="lastNameT1" layoutX="131.0" layoutY="150.0" text="Last Name" />
+      <Label fx:id="triageCategoryT1" layoutX="103.0" layoutY="177.0" text="Triage Category" />
+      <Label fx:id="triageCategoryT2" layoutX="103.0" layoutY="357.0" text="Triage Category" />
+      <Label fx:id="lastNameT2" layoutX="131.0" layoutY="330.0" text="Last Name" />
+      <Label fx:id="firstNameT2" layoutX="130.0" layoutY="300.0" text="First Name" />
+      <Label fx:id="titleT2" layoutX="165.0" layoutY="270.0" text="Title" />
+      <Label fx:id="treatmentRoom1" layoutX="60.0" layoutY="212.0" text="Treatment Room 2">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nhsNumberT2" layoutX="117.0" layoutY="241.0" text="NHS Number" />
+      <TextField fx:id="triageCategoryT2" layoutX="197.0" layoutY="353.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="lastNameTextFieldT2" layoutX="197.0" layoutY="325.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="firstNameTextFieldT2" layoutX="197.0" layoutY="296.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="titleTextFieldT2" layoutX="197.0" layoutY="266.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="nhsNumberTextFieldT2" layoutX="197.0" layoutY="237.0" prefHeight="25.0" prefWidth="213.0" />
+      <Label fx:id="triageCategoryT12" layoutX="103.0" layoutY="541.0" text="Triage Category" />
+      <Label fx:id="lastNameT12" layoutX="131.0" layoutY="514.0" text="Last Name" />
+      <Label fx:id="firstNameT12" layoutX="130.0" layoutY="484.0" text="First Name" />
+      <Label fx:id="titleT2" layoutX="165.0" layoutY="454.0" text="Title" />
+      <Label fx:id="treatmentRoom2" layoutX="60.0" layoutY="396.0" text="Treatment Room 3">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nhsNumberT12" layoutX="117.0" layoutY="425.0" text="NHS Number" />
+      <TextField fx:id="triageCategoryT3" layoutX="197.0" layoutY="537.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="lastNameTextFieldT3" layoutX="197.0" layoutY="509.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="firstNameTextFieldT3" layoutX="197.0" layoutY="480.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="nhsNumberTextFieldT3" layoutX="197.0" layoutY="450.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="nhsNumberTextFieldT3" layoutX="197.0" layoutY="421.0" prefHeight="25.0" prefWidth="213.0" />
+      <Label fx:id="triageCategoryT4" layoutX="480.0" layoutY="176.0" text="Triage Category" />
+      <Label fx:id="lastNameT4" layoutX="508.0" layoutY="149.0" text="Last Name" />
+      <Label fx:id="firstNameT4" layoutX="507.0" layoutY="119.0" text="First Name" />
+      <Label fx:id="titleT4" layoutX="542.0" layoutY="89.0" text="Title" />
+      <Label fx:id="treatmentRoom4" layoutX="437.0" layoutY="31.0" text="Treatment Room 4">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nhsNumberT4" layoutX="494.0" layoutY="60.0" text="NHS Number" />
+      <TextField fx:id="triageCategoryT4" layoutX="574.0" layoutY="172.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="lastNameTextFieldT4" layoutX="574.0" layoutY="144.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="firstNameTextFieldT4" layoutX="574.0" layoutY="115.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="titleTextFieldT4" layoutX="574.0" layoutY="85.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="nhsNumberTextFieldT4" layoutX="574.0" layoutY="56.0" prefHeight="25.0" prefWidth="213.0" />
+      <Label fx:id="triageCategoryT5" layoutX="480.0" layoutY="356.0" text="Triage Category" />
+      <Label fx:id="lastNameT5" layoutX="508.0" layoutY="329.0" text="Last Name" />
+      <Label fx:id="firstNameT5" layoutX="507.0" layoutY="299.0" text="First Name" />
+      <Label fx:id="titleT5" layoutX="542.0" layoutY="269.0" text="Title" />
+      <Label fx:id="treatmentRoom5" layoutX="437.0" layoutY="211.0" text="Treatment Room 5">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nhsNumberT5" layoutX="494.0" layoutY="240.0" text="NHS Number" />
+      <TextField fx:id="triageCategoryT5" layoutX="574.0" layoutY="352.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="lastNameTextFieldT5" layoutX="574.0" layoutY="324.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="firstNameTextFieldT5" layoutX="574.0" layoutY="295.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="titleTextFieldT5" layoutX="574.0" layoutY="265.0" prefHeight="25.0" prefWidth="213.0" />
+      <TextField fx:id="nhsNumberTextFieldT5" layoutX="574.0" layoutY="236.0" prefHeight="25.0" prefWidth="213.0" />
 
 	</children>
 </AnchorPane>
