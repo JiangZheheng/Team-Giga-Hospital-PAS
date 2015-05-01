@@ -3,6 +3,7 @@ package application;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.LinkedList;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +22,10 @@ public class PatientTest {
 	Date TimePatientJoinsQueue, LeaveTime;
 	char validGender, invalidGender;
 
+	/**
+	 * Set up test data 
+	 * @throws Exception
+	 */
 	@Before
 	public void setUp() throws Exception {
 		TimePatientJoinsQueue = new Date();
@@ -159,5 +164,19 @@ public class PatientTest {
 		patient.setPulledOutOfRoom(true);
 		assertTrue(patient.isPulledOutOfRoom());
 	}
+	
+	/**
+	 * Test to set triage category methods (valid emergency input)
+	 * Drop down menu used to catagorise so invalid data does not need tested 
+	 */
+	@Test
+	public void testSetTriageCatagory() throws HospitalPASException {
+		
+		Patient patient = new Patient();
+		Triage triage = Triage.EMERGENCY;
+		patient.setTriageCategory(triage);
+		assertEquals(triage.EMERGENCY.getLevel(), patient.getTriage());
+	}
 
+	
 }
