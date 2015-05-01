@@ -331,13 +331,15 @@ public class SortPatientQueue {
 		return null;
 	}
 
-	public long calculateAverageWaitingTime() {
+	public long calculateAverageWaitingTime(List<Patient> patientQueue) {
 		long totalTime = 0;
 		long averageTime = 0;
-		for (Patient patient : GUIMain.patientQueue) {
+		if(patientQueue.size()!=0){
+		for (Patient patient : patientQueue) {
 			totalTime += patient.getWaitingTime();
 		}
-		averageTime = totalTime / GUIMain.patientQueue.size();
+		averageTime = totalTime / patientQueue.size();
+		}
 		return averageTime;
 	}
 
