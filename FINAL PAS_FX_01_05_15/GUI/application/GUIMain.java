@@ -197,7 +197,7 @@ public class GUIMain extends Application {
 	 * method to initialise variables
 	 */
 	public void initialise() {
-
+		inSitus=new ArrayList<InSitu>();
 		patientQueue = new LinkedList<Patient>();
 		allPatientList = new LinkedList<Patient>();
 		treatmentRoomList = new ArrayList<TreatmentRoom>();
@@ -206,7 +206,11 @@ public class GUIMain extends Application {
 		for (int loop = 0; loop < Limits.NUMBERS_OF_ROOM; loop++) {
 			treatmentRoomList.add(new TreatmentRoom());
 		}
+		for (int loop = 0; loop < 2; loop++) {
+			inSitus.add(new InSitu());
+		}
 		sortPatientQueue = new SortPatientQueue();
+		
 
 	}
 
