@@ -39,6 +39,10 @@ public class NewPatientControl implements Initializable {
 	    stage.close();
 	}
 
+	/**
+	 * Adds patient from the database when ok is clicked 
+	 * @param event
+	 */
 	@FXML
 	private void okButtonOnClick(ActionEvent event) {
 		if (!nhsNumber.getText().isEmpty()) {
@@ -72,6 +76,7 @@ public class NewPatientControl implements Initializable {
 
 	}
 
+	
 	public NewPatientControl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -82,6 +87,11 @@ public class NewPatientControl implements Initializable {
 
 	}
 
+	/**
+	 * 
+	 * Thread to monitor the patients registered 
+	 *
+	 */
 	public class RegisterThread extends Thread {
 
 		@Override

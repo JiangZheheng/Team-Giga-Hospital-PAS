@@ -59,6 +59,9 @@ public class viewStaffControl implements Initializable {
 	@FXML
 	private TableColumn<Staff, String> staffTelephoneNumColumn;
 
+	/**
+	 * Method to populate staff table from database 
+	 */
 	public void populateStaffTable() {
 		List<Staff> staffList = GUIMain.getAllStaff();
 
@@ -97,12 +100,19 @@ public class viewStaffControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Method to launch on JavaFX
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		populateStaffTable();
 
 	}
 	
+	/**
+	 * Back event on click of back button 
+	 * @param event
+	 */
     @FXML
     void onClickBack(ActionEvent event) {
     	Stage newStage = new Stage();
