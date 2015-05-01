@@ -40,13 +40,7 @@ public class TreatmentRoomTest {
 		assertEquals(expected, actual);
 	}
 	
-	/**
-	 * test find empty treatment rooms method 
-	 */
-	@Test
-	public void testFindEmptyTreatmentRoom(){
-		
-	}
+	
 	
 /**
  * test of get and set for treatment room number
