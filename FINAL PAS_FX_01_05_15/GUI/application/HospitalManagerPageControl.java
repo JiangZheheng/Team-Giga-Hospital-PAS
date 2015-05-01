@@ -116,7 +116,8 @@ public class HospitalManagerPageControl implements Initializable {
 	 */
 	private void refresh() {
 		refreshTable();
-		timer.setText(calculateAverageWaitingTime());
+		String showTime=showTime(GUIMain.sortPatientQueue.calculateAverageWaitingTime());
+		timer.setText(showTime);
 
 	}
 
@@ -305,6 +306,21 @@ public class HospitalManagerPageControl implements Initializable {
 			tableView.setItems(null);
 		}
 	}
-
+	private String showTime(long time){
+		String showTime="00:00";
+		if (time != 0) {
+			long seconds = time / 1000;
+			if (seconds < 60) {
+				showTime = ("00:" + String.format("%02d", seconds));
+			} else if (seconds >= 60 && seconds < 3600) {
+				showTime = (String.format("%02d:", seconds / 60) + String
+						.format("%02d", seconds % 60));
+			} else {
+				showTime = ("More than one hour");
+			}
+		}
+		return showTime;
+		
+	}
 	
 }
