@@ -109,6 +109,10 @@ public class TreatmentRoom1Control implements Initializable {
 	@FXML
 	private Label allergies1;
 
+	/**
+	 * Logs the user out when button is clicked 
+	 * @param event
+	 */
 	@FXML
 	void onClickLogOut(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -133,6 +137,10 @@ public class TreatmentRoom1Control implements Initializable {
 
 	}
 
+	/**
+	 * discharges patient on click 
+	 * @param event
+	 */
 	@FXML
 	void onClickDischargePatient(ActionEvent event) {
 		treatmentRoom.dischargePatient(GUIMain.allPatientList, patient);
@@ -148,11 +156,19 @@ public class TreatmentRoom1Control implements Initializable {
 
 	}
 
+	/**
+	 * Allows doctor to allocate extra time to patient
+	 * @param event
+	 */
 	@FXML
 	void onClickAllocateExtraTime(ActionEvent event) {
 		treatmentRoom.allocateExtraTime();
 	}
 
+	/**
+	 * Closes window 
+	 * @param event
+	 */
 	@FXML
 	void onClickBack(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -176,6 +192,9 @@ public class TreatmentRoom1Control implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * Method launches the JavaFX
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		patient = treatmentRoom.getPatientInTreatmentRoom();
@@ -183,6 +202,9 @@ public class TreatmentRoom1Control implements Initializable {
 
 	}
 
+	/**
+	 * ~Method to refresh the Page and keep the information up to date 
+	 */
 	private void refreshThread() {
 		Thread myThread = new Thread(new Runnable() {
 
@@ -212,6 +234,9 @@ public class TreatmentRoom1Control implements Initializable {
 		myThread.start();
 	}
 
+	/**
+	 * Method to refresh the information on the page 
+	 */
 	private void refreshPatientInformation() {
 
 		if (patient != null) {

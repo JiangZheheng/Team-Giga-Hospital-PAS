@@ -30,7 +30,7 @@ import javafx.util.Callback;
 public class TriageNursePageControl implements Initializable {
 
 	/**
-	 * 
+	 * Declaring vars 
 	 */
 
 	@FXML
@@ -84,6 +84,10 @@ public class TriageNursePageControl implements Initializable {
 	@FXML
 	private Button jDoe;
 
+	/**
+	 * Onclick will log the user out 
+	 * @param event
+	 */
 	@FXML
 	void logoutOnClick(ActionEvent event) {
 
@@ -113,6 +117,10 @@ public class TriageNursePageControl implements Initializable {
 
 	}
 
+	/**
+	 * Onclick will search the patient 
+	 * @param event
+	 */
 	@FXML
 	void patienSearchOnClick(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -133,6 +141,10 @@ public class TriageNursePageControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Sets the triage with an on click event 
+	 * @param event
+	 */
 	@FXML
 	void setTriageOnClick(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -153,6 +165,10 @@ public class TriageNursePageControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Alter triage code on click 
+	 * @param event
+	 */
 	@FXML
 	void alterTriageOnClick(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -323,6 +339,10 @@ public class TriageNursePageControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Button to assign JDoe 
+	 * @param event
+	 */
 	public void JDoeOnClick(ActionEvent event) {
 
 		Patient patient = new Patient();
