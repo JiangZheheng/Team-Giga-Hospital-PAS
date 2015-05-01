@@ -4,6 +4,7 @@ package application;
  * Class to set the values of the treatment rooms
  */
 
+import java.io.FileNotFoundException;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -41,6 +42,10 @@ public class TreatmentRoom {
 	 */
 	Patient patientInTreatmentRoom;
 	
+	/**
+	 * 
+	 */
+	private WriteToFile writeToFile = new WriteToFile();
 	public TreatmentRoom(){
 		setTimeInTreatmentRoom(new Date());
 		
@@ -170,13 +175,14 @@ public class TreatmentRoom {
 	 * Method to discharge the patient from the system 
 	 * @param allPatients
 	 * @param patient
+	 * @throws FileNotFoundException 
 	 */
-	public void dischargePatient(List<Patient> allPatients,Patient patient){
+	public void dischargePatient(List<Patient> allPatients,Patient patient) throws FileNotFoundException{
 		this.patientInTreatmentRoom=null;
 		this.setVacant(true);
 		this.setTimeInTreatmentRoom(null);
 		patient.setLeaveTime(new Date());
-		
+		writeToFile.patientLeaveTimeToFile(patient);
 	}
 	
 	/**

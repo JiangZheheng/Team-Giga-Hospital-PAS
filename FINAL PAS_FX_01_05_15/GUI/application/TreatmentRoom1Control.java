@@ -1,5 +1,6 @@
 package application;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -140,9 +141,10 @@ public class TreatmentRoom1Control implements Initializable {
 	/**
 	 * discharges patient on click 
 	 * @param event
+	 * @throws FileNotFoundException 
 	 */
 	@FXML
-	void onClickDischargePatient(ActionEvent event) {
+	void onClickDischargePatient(ActionEvent event) throws FileNotFoundException {
 		treatmentRoom.dischargePatient(GUIMain.allPatientList, patient);
 	}
 
