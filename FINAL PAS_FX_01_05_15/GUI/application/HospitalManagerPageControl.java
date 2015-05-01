@@ -74,7 +74,9 @@ public class HospitalManagerPageControl implements Initializable {
 	    private Button treatmentRooms;
 
 	
-	
+	/**
+	 * Method to launch the java FX
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Thread myThread = new Thread(new Runnable() {
@@ -208,6 +210,9 @@ public class HospitalManagerPageControl implements Initializable {
 		stage.close();
 	}
 	
+	/**
+	 * Method to refresh the table on the page 
+	 */
 	private void refreshTable() {
 		if (!GUIMain.patientQueue.isEmpty()) {
 			ObservableList<Patient> list = FXCollections.observableArrayList();

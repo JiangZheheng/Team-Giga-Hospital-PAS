@@ -109,6 +109,10 @@ public class InSituControl implements Initializable {
 	@FXML
 	private Label allergies1;
 
+	/**
+	 * Event to log out the user on the click of the log out button 
+	 * @param event
+	 */
 	@FXML
 	void onClickLogOut(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -133,26 +137,46 @@ public class InSituControl implements Initializable {
 
 	}
 
+	/**
+	 * Method to discharge the patient on click of button 
+	 * @param event
+	 */
 	@FXML
 	void onClickDischargePatient(ActionEvent event) {
 		inSitu.dischargePatient(GUIMain.allPatientList, patient);
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickFurtherAction(ActionEvent event) {
 
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void onClickRecategorisePatient(ActionEvent event) {
 
 	}
 
+	/**
+	 * Alloocates extra time to the patient when clicked by doctor 
+	 * @param event
+	 */
 	@FXML
 	void onClickAllocateExtraTime(ActionEvent event) {
 		inSitu.allocateExtraTime();
 	}
 
+	/**
+	 * Closes the current window 
+	 * @param event
+	 */
 	@FXML
 	void onClickBack(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -176,6 +200,9 @@ public class InSituControl implements Initializable {
 		stage.close();
 	}
 
+	/**
+	 * launches the page 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		patient = inSitu.getPatient();
@@ -211,6 +238,10 @@ public class InSituControl implements Initializable {
 		myThread.setDaemon(true);
 		myThread.start();
 	}
+	
+	/**
+	 * refreshes patient information on the screen for the user 
+	 */
 
 	private void refreshPatientInformation() {
 
@@ -247,6 +278,11 @@ public class InSituControl implements Initializable {
 		}
 	}
 
+	/**
+	 * Method to set the time for the patient object entering the treatment rooms 
+	 * @param time
+	 * @return
+	 */
 	private String setTime(long time) {
 		if (time != 0) {
 			long seconds = time / 1000;
