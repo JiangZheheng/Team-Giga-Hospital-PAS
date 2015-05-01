@@ -173,7 +173,7 @@ public class InSitu {
 	 * @return
 	 */
 	public boolean alertManager(){
-		if((this.timeOutOfInSitu.getTime()-this.getTimeInSitu().getTime())/1000>Limits.TIME_IN_INSITU){
+		if((this.timeOutOfInSitu.getTime()-this.getTimeInSitu().getTime())/1000/60>=Limits.TIME_IN_INSITU){
 //			new ManagerSMSAlerts().sendSSMSManagerOnCallFullyEngaged();
 			System.out.println("sendSSMSManagerOnCallFullyEngaged()");
 			return true;

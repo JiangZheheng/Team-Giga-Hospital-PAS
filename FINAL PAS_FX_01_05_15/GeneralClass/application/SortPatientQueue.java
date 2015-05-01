@@ -300,11 +300,12 @@ public class SortPatientQueue {
 					
 					throw new HospitalPASException(
 							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
-				}else{
-					throw new HospitalPASException(
-							ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
 				}
+					
+				
 			}
+			throw new HospitalPASException(
+					ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
 			
 		}
 		return true;
