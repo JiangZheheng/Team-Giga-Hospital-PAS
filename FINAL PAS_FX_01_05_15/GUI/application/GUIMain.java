@@ -65,7 +65,7 @@ public class GUIMain extends Application {
 
 			Scene scene = new Scene(root, 450, 400);
 
-			primaryStage.setTitle("FXML Welcome");
+			primaryStage.setTitle("Hospital PAS");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			threadStart();
