@@ -1,5 +1,7 @@
 package application;
-
+/**
+ * Class to display the treatment rooms. Includes patient details. Allows doctor to allocate extra time, discharge patient. 
+ */
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -146,11 +148,19 @@ public class TreatmentRoom1Control implements Initializable {
 		treatmentRoom.dischargePatient(GUIMain.allPatientList, patient);
 	}
 
+	/**
+	 * Can be expanded on further development
+	 * @param event
+	 */
 	@FXML
 	void onClickFurtherAction(ActionEvent event) {
 
 	}
-
+	
+	/**
+	 * Allows doctor to recategorise patient
+	 * @param event
+	 */
 	@FXML
 	void onClickRecategorisePatient(ActionEvent event) {
 		

@@ -32,7 +32,6 @@ public class TriageNursePageControl implements Initializable {
 	/**
 	 * Declaring vars 
 	 */
-
 	@FXML
 	private MenuItem setTriage;
 
