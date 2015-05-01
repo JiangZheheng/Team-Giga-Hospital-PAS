@@ -59,5 +59,4 @@ public class Limits {
 	 * Constant to set the extended time to be allocated
 	 */
 	public final static int EXTENDED_TIME = 5;
-	public final static int TIME_IN_INSITU=15;
 }
