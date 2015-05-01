@@ -94,9 +94,6 @@ public class GUIMain extends Application {
 						while (!delay) {
 							Thread.sleep(1000);
 
-							// sortPatientQueue
-							// .thirtyMinuteManagerAlert(patientQueue);
-
 							if (sortPatientQueue
 									.calculateQueueSize(GUIMain.patientQueue)) {
 								delay = false;
