@@ -345,6 +345,10 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 	
+	/**
+	 * On click event to show the paitents being treated in situ
+	 * @param event
+	 */
 	@FXML
 	void onClickInsitu1(ActionEvent event) {
 		Stage newStage = new Stage();
@@ -369,6 +373,10 @@ public class DoctorPageControl implements Initializable {
 		stage.close();
 	}
 	
+	/**
+	 * On click event for the second insitu button to show the user the insitu treatment going on 
+	 * @param event
+	 */
 	@FXML
 	void onClickInsitu2(ActionEvent event) {
 		Stage newStage = new Stage();
