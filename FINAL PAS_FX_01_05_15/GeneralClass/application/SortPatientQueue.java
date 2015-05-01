@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
  *
  */
 public class SortPatientQueue {
-	
-	public InSitu insitu=new InSitu();
+
+	public InSitu insitu = new InSitu();
 
 	/**
 	 * default constructor for SortPatientComparator Class
@@ -39,14 +39,15 @@ public class SortPatientQueue {
 			// find the longest waiting time of the patients in the queue
 			long averageWaitingTime = 0;
 			long totalWaitingTime = 0;
-			
+
 			for (Patient patient : GUIMain.patientQueue) {
-				
-				for (int count = 0; count<=patientQueue.size(); count++){
+
+				for (int count = 0; count <= patientQueue.size(); count++) {
 					totalWaitingTime += patient.getWaitingTime();
 				}
 				{
-					averageWaitingTime = totalWaitingTime / patientQueue.size() / 1000 / 60;
+					averageWaitingTime = totalWaitingTime / patientQueue.size()
+							/ 1000 / 60;
 				}
 			}
 			if (averageWaitingTime >= 0 && averageWaitingTime < 10) {
@@ -85,7 +86,7 @@ public class SortPatientQueue {
 	 * @throws AddressException
 	 */
 	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue) {
-		
+
 		boolean twoPatientsWaiting = false;
 
 		// initialising long to get the patient time in the queue
@@ -115,8 +116,9 @@ public class SortPatientQueue {
 					twoPatientsWaiting = false;
 				}
 
-			} 
-		} return twoPatientsWaiting;
+			}
+		}
+		return twoPatientsWaiting;
 
 	}
 
@@ -132,7 +134,7 @@ public class SortPatientQueue {
 			// patients to the nearest hospital
 			// sendToNearestHospital(patientQueue, patient);
 			// if the queue is >= 10 calling method to send SMS to OnCall team
-			
+
 			return true;
 		}
 		return false;
@@ -155,7 +157,7 @@ public class SortPatientQueue {
 		boolean isRoomAvailable = false;
 
 		// needs to be -1 as the array list of rooms begins with an index of 0
-		int treatmentRoom =-1;
+		int treatmentRoom = -1;
 
 		// initialising the int to get the category of the patient currently in
 		// the treatment room
@@ -169,7 +171,7 @@ public class SortPatientQueue {
 			room.setVacant(false);
 			return true;
 		}
-		
+
 		// for loop to iterate through the treatment rooms and check if a
 		// non-emergency patient can be removed to allow an emergency patient to
 		// be put in - starts at 0 because the array list of treatment rooms
@@ -184,13 +186,13 @@ public class SortPatientQueue {
 			// the reference of the treatmentRoom to the loop
 			if (!(treatmentRooms.get(loop).getPatientTriageCategory() == Triage.EMERGENCY
 					.getLevel())) {
-				
+
 				// if statement to find the highest category in the treatment
 				// room list and set the highest category of patient into the
 				// patient room
 				if (treatmentRooms.get(loop).getPatientInTreatmentRoom()
 						.getTriageCategory() > currentPatientTriageCategory) {
-					
+
 					treatmentRoom = loop;
 					currentPatientTriageCategory = treatmentRooms.get(loop)
 							.getPatientTriageCategory();
@@ -217,9 +219,7 @@ public class SortPatientQueue {
 		}
 
 		if (treatmentRoom != -1) {
-			
-			
-			
+
 			patientQueue.addFirst(treatmentRooms.get(treatmentRoom)
 					.getPatientInTreatmentRoom());
 			patientBeingTreated(patient, treatmentRoom, treatmentRooms);
@@ -284,37 +284,37 @@ public class SortPatientQueue {
 	 * @return
 	 * @throws HospitalPASException
 	 */
-	public boolean redirectEmergencyPatient(LinkedList<Patient> allPatients,LinkedList<Patient> patientQueue,
-			Patient patient, List<TreatmentRoom> treatmentRooms,List<InSitu> inSitus)
+	public boolean redirectEmergencyPatient(LinkedList<Patient> allPatients,
+			LinkedList<Patient> patientQueue, Patient patient,
+			List<TreatmentRoom> treatmentRooms, List<InSitu> inSitus)
 			throws HospitalPASException {
 
 		// if you are unable to put emergency patient into a treatment room then
 		// alert on call team
 		if (!pushEmergencyPatientIntoTreatmentRoom(patientQueue, patient,
 				treatmentRooms)) {
-			for(InSitu inSitu:inSitus){
-				if(inSitu.isVacant()==true){
+			for (InSitu inSitu : inSitus) {
+				if (inSitu.isVacant() == true) {
 					inSitu.setPatient(patient);
 					inSitu.setTimeInSitu(new Date());
 					inSitu.setVacant(false);
-					
+
 					throw new HospitalPASException(
-							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
-				}else{
-					inSitu.controlInSitu(patientQueue, patient);
+							ExceptionsEnums.EMERGENCYSENTTOONCALL
+									.getException());
 				}
-					
-				
+
 			}
 			throw new HospitalPASException(
 					ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
-			
+
 		}
 		return true;
 	}
 
 	/**
-	 * method to find and empty treatment room 
+	 * method to find and empty treatment room
+	 * 
 	 * @param rooms
 	 * @return
 	 */
@@ -326,6 +326,28 @@ public class SortPatientQueue {
 			}
 		}
 		return null;
+	}
+
+	public String calculateAverageWaitingTime() {
+		long totalTime = 0;
+		long averageTime = 0;
+		String showTime = "00:00";
+		for (Patient patient : GUIMain.patientQueue) {
+			totalTime += patient.getWaitingTime();
+		}
+		averageTime = totalTime / GUIMain.patientQueue.size();
+		if (averageTime != 0) {
+			long seconds = averageTime / 1000;
+			if (seconds < 60) {
+				showTime = ("00:" + String.format("%02d", seconds));
+			} else if (seconds >= 60 && seconds < 3600) {
+				showTime = (String.format("%02d:", seconds / 60) + String
+						.format("%02d", seconds % 60));
+			} else {
+				showTime = ("More than one hour");
+			}
+		}
+		return showTime;
 	}
 
 }
