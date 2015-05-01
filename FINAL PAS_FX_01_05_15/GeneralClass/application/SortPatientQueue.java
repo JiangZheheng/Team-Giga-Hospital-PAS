@@ -295,6 +295,8 @@ public class SortPatientQueue {
 			for(InSitu inSitu:inSitus){
 				if(inSitu.isVacant()==true){
 					inSitu.setPatient(patient);
+					inSitu.setTimeInSitu(new Date());
+					inSitu.setVacant(false);
 					
 					throw new HospitalPASException(
 							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
