@@ -344,6 +344,54 @@ public class DoctorPageControl implements Initializable {
 
 		stage.close();
 	}
+	
+	@FXML
+	void onClickInsitu1(ActionEvent event) {
+		Stage newStage = new Stage();
+
+		Parent root;
+		try {
+			InSituControl.inSitu = GUIMain.inSitus.get(0);
+			root = FXMLLoader.load(getClass().getResource(
+					"/application/TreatmentRoom1.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Treatment Room 5");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) treatmentRoom5.getScene().getWindow();
+
+		stage.close();
+	}
+	
+	@FXML
+	void onClickInsitu2(ActionEvent event) {
+		Stage newStage = new Stage();
+
+		Parent root;
+		try {
+			InSituControl.inSitu = GUIMain.inSitus.get(1);
+			root = FXMLLoader.load(getClass().getResource(
+					"/application/TreatmentRoom1.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Treatment Room 5");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) treatmentRoom5.getScene().getWindow();
+
+		stage.close();
+	}
 
 	/**
 	 * Method to initilise thread for the page
@@ -549,13 +597,4 @@ public class DoctorPageControl implements Initializable {
 
 	}
 
-	@FXML
-	void onClickInsitu1(ActionEvent event) {
-
-	}
-
-	@FXML
-	void onClickInsitu2(ActionEvent event) {
-
-	}
 }

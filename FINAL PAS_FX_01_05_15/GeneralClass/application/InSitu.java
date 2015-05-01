@@ -5,6 +5,7 @@ import java.util.Date;
  * class to control the on call team in situ
  */
 import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class InSitu {
@@ -146,5 +147,18 @@ public class InSitu {
 		}else{
 			return false;
 		}
+	}
+	public void dischargePatient(List<Patient> allPatients,Patient patient){
+		this.setPatient(null);
+		this.setVacant(true);
+		this.setTimeInSitu(null);
+		patient.setLeaveTime(new Date());
+		
+	}
+	public void allocateExtraTime() {
+
+		timeOutOfInSitu.setTime(timeOutOfInSitu.getTime()
+				+ TimeUnit.MINUTES.toMillis(Limits.EXTENDED_TIME));
+
 	}
 }
