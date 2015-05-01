@@ -15,9 +15,7 @@ public enum AlertsENums {
 			"Two or more patients have been waiting over 30 minutes"), SMSUSERNAME(
 			"hmcdade767@gmail.com"), SMSHASHKEY(
 			"64007dc125b1e33d8204dd6c6aaf10ce83c12fb7"), SMSSENDER(
-			"HospitalPAS"), SMSCONNECTION("https://api.txtlocal.com/send/?"), EMAILSUBJECTMESSAGE(
-			"Hospital Alert"), EMAILSENDER("hospitalsender@gmail.com"), EMAILSENDERPASSWORD(
-			"validPassword"), EMAILSENDERSMTP("smtp.gmail.com");
+			"HospitalPAS"), SMSCONNECTION("https://api.txtlocal.com/send/?");
 
 	private String alert;
 
