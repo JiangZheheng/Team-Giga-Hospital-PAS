@@ -7,6 +7,9 @@ package application;
 
 public enum DatabaseENums {
 	
+	/**
+	 * Setting of enums for use in the database 
+	 */
 	DATABASEURL ("jdbc:mysql://web2.eeecs.qub.ac.uk/40108307"), DATABASECLASS ("com.mysql.jdbc.Driver"), DATABASEUSERNAME ("40108307"), DATABASEPASSWORD ("CZB6355"), 
 	DATABASESTAFFSELECTQUERY ("select * from STAFF"), DATABASENURSETELEPHONESELECTQUERY ("select telephone from STAFF where staff_team=onCall and staff_role='nurse'"), 
 	DATABASESTAFFID ("STAFF_ID"), DATABASESTAFFTITLE ("TITLE"), DATABASESTAFFPASSWORD ("STAFF_PASSWORD"), DATABASESTAFFFIRSTNAME ("FIRST_NAME"), DATABASESTAFFLASTNAME ("LAST_NAME"), DATABASESTAFFROLE ("STAFF_ROLE"), 

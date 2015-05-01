@@ -1,7 +1,10 @@
 package application;
 
-import java.util.LinkedList;
-
+/**
+ * 
+ * Class to control on call alerts 
+ *
+ */
 public class OnCall {
 
 	/**

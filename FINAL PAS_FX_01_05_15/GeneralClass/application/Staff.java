@@ -1,5 +1,10 @@
 package application;
 
+/**
+ * Class to represent the staff in the system 
+ */
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

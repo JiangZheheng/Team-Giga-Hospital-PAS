@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * Interface for triage nurse 
+ */
+
 import java.util.LinkedList;
 import java.util.List;
 

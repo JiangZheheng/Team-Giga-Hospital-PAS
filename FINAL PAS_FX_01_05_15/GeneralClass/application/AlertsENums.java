@@ -7,6 +7,9 @@ package application;
 
 public enum AlertsENums {
 
+	/**
+	 * List of enums to be used in the alerts classes 
+	 */
 	SMSALERTONCALLTEAM(
 			"On Call Team Needed in A and E. Queue capacity has reached the maximum"), ALERTMANAGERONCALLFULLYENGAGED(
 			"On Call team fully engaged.  Patients being redirected"), ALERTMANAGERWAITINGTIME(

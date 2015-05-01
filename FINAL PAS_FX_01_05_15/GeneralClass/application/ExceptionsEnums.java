@@ -8,6 +8,10 @@ package application;
  */
 
 public enum ExceptionsEnums {
+	
+	/**
+	 * List of ENums to be used in the exceptions
+	 */
 
 	NHSNUMBEREXCEPTION("Invald NHS Number"), UNABLETOTRIAGE(
 			"Unable to triage this patient"), PATIENTALREADYTRIAGED(

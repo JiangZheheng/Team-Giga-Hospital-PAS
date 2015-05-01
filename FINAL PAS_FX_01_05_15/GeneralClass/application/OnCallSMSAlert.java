@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * Class to control SMS alerts 
+ */
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;

@@ -1,5 +1,8 @@
 package application;
 
+/**
+ * Receptionist class that holds methods used on the receptionist page  
+ */
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

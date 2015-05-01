@@ -73,7 +73,7 @@ public class ManagerSMSAlerts implements IAlert {
 	}
 	
 	/**
-	 * 
+	 * Method to get manager phone number 
 	 * @return
 	 */
 	public String getManagerPhoneNumber() {

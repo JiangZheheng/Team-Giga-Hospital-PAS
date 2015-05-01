@@ -1,5 +1,11 @@
 package application;
 
+/**
+ * 
+ * Abstract class to create the attributes of a person 
+ *
+ */
+
 public abstract class Person {
 
 	/**

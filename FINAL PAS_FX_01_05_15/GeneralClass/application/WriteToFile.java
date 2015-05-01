@@ -1,5 +1,9 @@
 package application;
 
+/**
+ * Class to write to file the status of the queue every second. 
+ */
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
