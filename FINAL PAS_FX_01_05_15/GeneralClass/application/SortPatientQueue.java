@@ -300,6 +300,8 @@ public class SortPatientQueue {
 					
 					throw new HospitalPASException(
 							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
+				}else{
+					inSitu.controlInSitu(patientQueue, patient);
 				}
 					
 				

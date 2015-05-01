@@ -99,7 +99,7 @@ public class SetTriageControl implements Initializable {
 	 * if OK button is clicked, firstly the system will find the patient in
 	 * allPatientList by nhs_number, then set the triage of this patient
 	 * 
-	 * @author
+	 * @author Jiang Zhe Heng
 	 * @param event
 	 */
 	@FXML
