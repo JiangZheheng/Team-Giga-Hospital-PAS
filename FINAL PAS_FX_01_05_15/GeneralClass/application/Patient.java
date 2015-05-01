@@ -7,10 +7,11 @@ package application;
 /**
  * importing the date class from java.util to set the times the patient enters and leaves a and e
  */
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Random;
 
-public class Patient extends Person {
+public class Patient extends Person implements Serializable {
 
 	/**
 	 * integer to allow the Triage nurse to allocate an unconscious patient an

@@ -30,7 +30,8 @@ public class SortPatientQueue {
 	public static Integer status;
 
 	/**
-	 * method to calculate the status of the queue
+	 * method to calculate the status of the queue - based on the average
+	 * waiting time of patients in the queue
 	 */
 	public void calculateStatus(LinkedList<Patient> patientQueue) {
 
@@ -47,17 +48,19 @@ public class SortPatientQueue {
 				}
 				{
 					averageWaitingTime = totalWaitingTime / patientQueue.size()
-							/ 1000 / 60;
+							/ Limits.MILLISECS_TO_MINS
+							/ Limits.MULTIPLY_MINUTES_TO_SECONDS;
+
 				}
 			}
-			if (averageWaitingTime >= 0 && averageWaitingTime < 10) {
-				status = 1;
-			} else if (averageWaitingTime >= 10 && averageWaitingTime < 20) {
-				status = 2;
-			} else if (averageWaitingTime >= 20) {
-				status = 3;
+			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT && averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
+				status = Limits.STATUS_CODE_ONE;
+			} else if (averageWaitingTime >= Limits.STATUS_ONE_UPPER_LIMIT && averageWaitingTime < Limits.STATUS_TWO_UPPER_LIMIT) {
+				status = Limits.STATUS_CODE_TWO;
+			} else if (averageWaitingTime >= Limits.STATUS_TWO_UPPER_LIMIT) {
+				status = Limits.STATUS_CODE_THREE;
 			} else if (GUIMain.patientQueue.size() == Limits.PATIENT_LIMIT_IN_QUEUE) {
-				status = 4;
+				status = Limits.STATUS_CODE_FOUR;
 			}
 		}
 	}
