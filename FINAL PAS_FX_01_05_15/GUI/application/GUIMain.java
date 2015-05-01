@@ -116,7 +116,7 @@ public class GUIMain extends Application {
 		alertThread.setDaemon(true);
 		alertThread.start();
 		
-		System.out.println("alertThread");
+		System.out.println("inSituThread");
 		Thread inSituThread = new Thread() {
 
 			@Override
