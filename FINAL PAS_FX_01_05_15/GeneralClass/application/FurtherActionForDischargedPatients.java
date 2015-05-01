@@ -15,17 +15,31 @@ public enum FurtherActionForDischargedPatients {
 			"Patient transferred to theatre"), DISCHARGED("Patient treated");
 
 	
+	/**
+	 * Variable to hold the ENum data 
+	 */
 	private String furtherAction;
 	
-	
+	/**
+	 * Constructor with arguements 
+	 * @param furtherAction
+	 */
 	private FurtherActionForDischargedPatients(String furtherAction) {
 		this.furtherAction = furtherAction;
 	}
 
+	/**
+	 * get variable 
+	 * @return
+	 */
 	public String getFurtherAction() {
 		return furtherAction;
 	}
 
+	/**
+	 * set variable 
+	 * @param furtherAction
+	 */
 	public void setFurtherAction(String furtherAction) {
 		this.furtherAction = furtherAction;
 	}

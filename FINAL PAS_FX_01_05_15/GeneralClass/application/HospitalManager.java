@@ -5,7 +5,7 @@ package application;
  *
  */
 
-public class HospitalManager extends Staff implements IHospitalManager {
+public class HospitalManager extends Staff {
 
 	/**
 	 * instance variable for the hospital manager contact number to send SMS Alerts to 
@@ -71,12 +71,6 @@ public class HospitalManager extends Staff implements IHospitalManager {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	@Override
-	public void viewAllStaff() {
-		// TODO Auto-generated method stub
-		
 	}
 
 

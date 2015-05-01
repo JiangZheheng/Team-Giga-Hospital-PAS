@@ -19,16 +19,31 @@ public enum ExceptionsEnums {
 			"OnCallTeam is engaged,the emergency patient is redirected to another hospital"), EMERGENCYSENTTOONCALL(
 			"The emergency patient is sent to on call team");
 
+	/**
+	 * Variable to hold the data
+	 */
 	private String exception;
 
+	/**
+	 * Constructor with arguements for the ENums
+	 * @param exception
+	 */
 	private ExceptionsEnums(String exception) {
 		this.exception = exception;
 	}
 
+	/**
+	 * method to get the exception
+	 * @return
+	 */
 	public String getException() {
 		return exception;
 	}
 
+	/**
+	 * Method to set the exception 
+	 * @param exception
+	 */
 	public void setException(String exception) {
 		this.exception = exception;
 	}
