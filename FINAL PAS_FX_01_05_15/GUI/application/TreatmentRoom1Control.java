@@ -153,7 +153,28 @@ public class TreatmentRoom1Control implements Initializable {
 
 	@FXML
 	void onClickRecategorisePatient(ActionEvent event) {
+		
+		Stage newStage = new Stage();
 
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource(
+					"/receptionistPage/AlterTriage.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Hospital PAS");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) treatmentRoom11.getScene().getWindow();
+
+		stage.close();
+
+		
 	}
 
 	/**
