@@ -218,8 +218,7 @@ public class SortPatientQueue {
 
 		if (treatmentRoom != -1) {
 			
-			System.out.println(treatmentRooms.get(treatmentRoom)
-					.getPatientInTreatmentRoom().getNhsNumber());
+			
 			
 			patientQueue.addFirst(treatmentRooms.get(treatmentRoom)
 					.getPatientInTreatmentRoom());
