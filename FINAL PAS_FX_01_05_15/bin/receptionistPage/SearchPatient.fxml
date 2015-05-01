@@ -28,7 +28,5 @@
         <TextField fx:id="filterField" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
       </children>
     </HBox>
-      <Button fx:id="selectButton" layoutX="300.0" layoutY="529.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Select" />
-      <Button fx:id="cancelButton" layoutX="468.0" layoutY="529.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Cancel" />
   </children>
 </AnchorPane>
