@@ -41,7 +41,7 @@ public class OnCallSMSAlert implements IAlert {
 	private String thirdNurseOnCall;
 
 	/**
-	 * 
+	 * Method to get first doctor on call details
 	 * @return
 	 */
 	public String getFirstDoctorOnCall() {
@@ -49,7 +49,7 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * 
+	 * Method to get second on call details 
 	 * @return
 	 */
 	public String getSecondDoctorOnCall() {
@@ -58,7 +58,7 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * 
+	 * Method to get first nurse on call details 
 	 * @return
 	 */
 	public String getFirstNurseOnCall() {
@@ -66,7 +66,7 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * 
+	 * Method to get second on call nurse details 
 	 * @return
 	 */
 	public String getSecondNurseOnCall() {
@@ -74,7 +74,7 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * 
+	 * Method to get third nurse on call 
 	 * @return
 	 */
 	public String getThirdNurseOnCall() {

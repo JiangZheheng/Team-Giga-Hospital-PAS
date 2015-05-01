@@ -2,6 +2,9 @@ package application;
 
 public abstract class Person {
 
+	/**
+	 * Creation of vars 
+	 */
 	private String title;
 	private String firstName;
 	private String lastName;
@@ -37,9 +40,9 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method that sets the title of the person 
 	 * @param title
-	 *            gets set
+	 *    
 	 */
 	public void setTitle(String title) throws NullPointerException {
 		if (title.isEmpty()) {
@@ -51,7 +54,7 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method to get the first name
 	 * @return persons first name
 	 */
 	public String getFirstName() {
@@ -59,9 +62,9 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method to set the first name 
 	 * @param firstName
-	 *            gets set
+	 *         
 	 */
 	public void setFirstName(String firstName) throws NullPointerException {
 		if (firstName.isEmpty()) {
@@ -72,7 +75,7 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method to get the last name 
 	 * @return last name of person
 	 */
 	public String getLastName() {
@@ -80,9 +83,9 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method to set the last name 
 	 * @param lastName
-	 *            gets set
+	 *            
 	 */
 	public void setLastName(String lastName) throws NullPointerException {
 		if (lastName.isEmpty()) {
@@ -93,7 +96,7 @@ public abstract class Person {
 	}
 
 	/**
-	 * 
+	 * Method to get the gender 
 	 * @return gender
 	 */
 	public char getGender() {

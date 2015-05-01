@@ -33,6 +33,9 @@ public class Receptionist extends Staff implements IReceptionist {
 
 	}
 
+	/**
+	 * Method to query the patient system 
+	 */
 	public boolean queryPAS(Patient patient) {
 		boolean queryPAS = false;
 		DatabaseENums url = DatabaseENums.DATABASEURL;
