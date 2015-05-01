@@ -2,6 +2,9 @@ package application;
 
 import static org.junit.Assert.*;
 
+
+import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -64,9 +67,6 @@ public class ReceptionistTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testRegisterPatientToAandE() {
-		fail("Not yet implemented");
-	}
+
 
 }
