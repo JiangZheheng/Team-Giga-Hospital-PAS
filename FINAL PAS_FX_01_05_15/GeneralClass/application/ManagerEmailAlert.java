@@ -24,7 +24,7 @@ import javax.mail.internet.MimeMessage;
 public class ManagerEmailAlert implements IAlert {
 
 	/**
-	 * String to hold the managerEmailAddress 
+	 * String to hold the managerEmailAddress
 	 */
 	private String managerEmailAddress;
 
@@ -34,7 +34,7 @@ public class ManagerEmailAlert implements IAlert {
 	static Properties mailServerProperties;
 
 	/**
-	 * static to get the Mail Session 
+	 * static to get the Mail Session
 	 */
 	static Session getMailSession;
 
@@ -47,12 +47,13 @@ public class ManagerEmailAlert implements IAlert {
 	 * Constant to hold the subject message of the A and E alert
 	 */
 	public static final String MANAGERSUBJECT = "A&E alert";
-	
+
 	/**
-	 * Constant to hold the body of the email for two patients waiting over 30 minutes
+	 * Constant to hold the body of the email for two patients waiting over 30
+	 * minutes
 	 */
 	public static final String MANAGEREMAILTWOPATIENTS = "Two or more patients have been waiting for 30 minutes ";
-	
+
 	/**
 	 * Constant to hold the body of the email for on call fully engaged
 	 */
@@ -109,34 +110,6 @@ public class ManagerEmailAlert implements IAlert {
 		return managerEmailAddress;
 	}
 
-	public static void getProperties() {
-
-		mailServerProperties = System.getProperties();
-		mailServerProperties.put("mail.smtp.port", "587");
-		mailServerProperties.put("mail.smtp.auth", "true");
-		mailServerProperties.put("mail.smtp.starttls.enable", "true");
-
-	}
-
-	/**
-	 * method to send email
-	 * 
-	 * @param getMailSession
-	 * @throws AddressException
-	 * @throws MessagingException
-	 */
-	public static void transport(Session getMailSession)
-			throws AddressException, MessagingException {
-
-		Transport transport = getMailSession.getTransport("smtp");
-		transport.connect("smtp.gmail.com", "hospitalsender@gmail.com",
-				"validPassword");
-		transport.sendMessage(generateMailMessage,
-				generateMailMessage.getAllRecipients());
-		transport.close();
-
-	}
-
 	/**
 	 * method to generate and send email alerts to the Hospital Manager
 	 * 
@@ -146,17 +119,16 @@ public class ManagerEmailAlert implements IAlert {
 	public void generateAndSendEmailPatientsWaitingThirtyMinutes()
 			throws AddressException, MessagingException {
 		setManagerEmailAddress();
-		
+
 		// Step1
-		System.out.println("\n 1st ===> setup Mail Server Properties..");
+
 		mailServerProperties = System.getProperties();
 		mailServerProperties.put("mail.smtp.port", "587");
 		mailServerProperties.put("mail.smtp.auth", "true");
 		mailServerProperties.put("mail.smtp.starttls.enable", "true");
-		
 
 		// Step2
-		System.out.println("\n\n 2nd ===> get Mail Session..");
+
 		setManagerEmailAddress();
 		System.out.println(getManagerEmail().toString());
 		getMailSession = Session.getDefaultInstance(mailServerProperties, null);
@@ -169,9 +141,8 @@ public class ManagerEmailAlert implements IAlert {
 		String emailBody = MANAGEREMAILTWOPATIENTS;
 		generateMailMessage.setContent(emailBody, "text/html");
 
-
 		// Step3
-		System.out.println("\n\n 3rd ===> Get Session and Send mail");
+
 		Transport transport = getMailSession.getTransport("smtp");
 		transport.connect("smtp.gmail.com", "hospitalsender@gmail.com",
 				"validPassword");
@@ -196,7 +167,7 @@ public class ManagerEmailAlert implements IAlert {
 		mailServerProperties.put("mail.smtp.port", "587");
 		mailServerProperties.put("mail.smtp.auth", "true");
 		mailServerProperties.put("mail.smtp.starttls.enable", "true");
-		
+
 		// Step2
 		System.out.println("\n\n 2nd ===> get Mail Session..");
 		setManagerEmailAddress();
@@ -210,7 +181,6 @@ public class ManagerEmailAlert implements IAlert {
 		generateMailMessage.setSubject(MANAGERSUBJECT);
 		String emailBody = MANAGEREMAILONCALLENGAGED;
 		generateMailMessage.setContent(emailBody, "text/html");
-		
 
 		// Step3
 		System.out.println("\n\n 3rd ===> Get Session and Send mail");

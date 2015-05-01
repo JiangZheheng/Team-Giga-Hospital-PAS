@@ -179,7 +179,7 @@ public class GUIMain extends Application {
 		inSituThread.setDaemon(true);
 		inSituThread.start();
 		
-		System.out.println("alertThread");
+		System.out.println("alertThreadForThirtyMin");
 		Thread alertThreadForThirtyMinAlert = new Thread() {
 
 			@Override
