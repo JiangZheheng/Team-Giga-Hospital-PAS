@@ -54,7 +54,7 @@ public class GUIMain extends Application {
 	}
 
 	/**
-	 * Sets the stage for the JavaFX to run on 
+	 * Sets the stage for the JavaFX to run on
 	 */
 	public void start(Stage primaryStage) {
 		initialise();
@@ -78,7 +78,7 @@ public class GUIMain extends Application {
 	}
 
 	/**
-	 * Thread to manage the alerts 
+	 * Thread to manage the alerts
 	 */
 	private void alertThread() {
 		System.out.println("alertThread");
@@ -93,17 +93,17 @@ public class GUIMain extends Application {
 					while (true) {
 						while (!delay) {
 							Thread.sleep(1000);
-							
-//								sortPatientQueue
-//										.thirtyMinuteManagerAlert(patientQueue);
-							
-							if(sortPatientQueue
-									.calculateQueueSize(GUIMain.patientQueue)){
-								delay=false;
+
+							// sortPatientQueue
+							// .thirtyMinuteManagerAlert(patientQueue);
+
+							if (sortPatientQueue
+									.calculateQueueSize(GUIMain.patientQueue)) {
+								delay = false;
 							}
 						}
-						delay=true;
-						Thread.sleep(10000*600);
+						delay = true;
+						Thread.sleep(10000 * 600);
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -115,7 +115,7 @@ public class GUIMain extends Application {
 
 		alertThread.setDaemon(true);
 		alertThread.start();
-		
+
 		System.out.println("inSituThread");
 		Thread inSituThread = new Thread() {
 
@@ -128,20 +128,18 @@ public class GUIMain extends Application {
 					while (true) {
 						while (!delay) {
 							Thread.sleep(1000);
-							
-//								sortPatientQueue
-//										.thirtyMinuteManagerAlert(patientQueue);
-							for(InSitu inSitu:inSitus){
-								if(inSitu.isVacant()==false){
 
-									if(inSitu.alertManager()){
-										delay=true;
+							for (InSitu inSitu : inSitus) {
+								if (inSitu.isVacant() == false) {
+
+									if (inSitu.alertManager()) {
+										delay = true;
 									}
 								}
 							}
 						}
-						delay=true;
-						Thread.sleep(10000*600);
+						delay = true;
+						Thread.sleep(10000 * 600);
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -165,8 +163,6 @@ public class GUIMain extends Application {
 			@Override
 			public void run() {
 
-				int i = 0;
-
 				try {
 					while (true) {
 						Thread.sleep(1000);
@@ -174,17 +170,17 @@ public class GUIMain extends Application {
 						sortPatientQueue.allocatePatientToTreatmentRoom(
 								patientQueue, patientQueue.peek(),
 								treatmentRoomList);
-						// sortPatientQueue.thirtyMinuteManagerAlert(patientQueue);
+
 						sortPatientQueue.movePatientToTopOfQueue(patientQueue);
-						// sortPatientQueue
-						// .calculateQueueSize(GUIMain.patientQueue);
-						for(TreatmentRoom treatmentRoom:treatmentRoomList){
-							if(treatmentRoom.isVacant()==false){
-								treatmentRoom.removePatientFromTreatmentroomAutomatically();
+
+						for (TreatmentRoom treatmentRoom : treatmentRoomList) {
+							if (treatmentRoom.isVacant() == false) {
+								treatmentRoom
+										.removePatientFromTreatmentroomAutomatically();
 							}
 						}
-						for(InSitu inSitu:inSitus){
-							if(inSitu.isVacant()==false){
+						for (InSitu inSitu : inSitus) {
+							if (inSitu.isVacant() == false) {
 								inSitu.removePatientFromTreatmentroomAutomatically();
 							}
 						}
@@ -194,10 +190,7 @@ public class GUIMain extends Application {
 
 							e.printStackTrace();
 						}
-						// refresh();
-						// updateTreatmentRoomsStatus(patient);
-						// sortPatientQueue.movePatientToTopOfQueue(patientQueue,
-						// patient);
+
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -212,7 +205,7 @@ public class GUIMain extends Application {
 	}
 
 	/**
-	 * Thread to refresh the queue constantly 
+	 * Thread to refresh the queue constantly
 	 */
 	public void refresh() {
 		// nurseTriage.putPatientIntoQueue(patientQueue, patient);
@@ -230,7 +223,7 @@ public class GUIMain extends Application {
 	 * method to initialise variables
 	 */
 	public void initialise() {
-		inSitus=new ArrayList<InSitu>();
+		inSitus = new ArrayList<InSitu>();
 		patientQueue = new LinkedList<Patient>();
 		allPatientList = new LinkedList<Patient>();
 		treatmentRoomList = new ArrayList<TreatmentRoom>();
@@ -243,12 +236,12 @@ public class GUIMain extends Application {
 			inSitus.add(new InSitu());
 		}
 		sortPatientQueue = new SortPatientQueue();
-		
 
 	}
 
 	/**
-	 * Method to pull the staff details from the database 
+	 * Method to pull the staff details from the database
+	 * 
 	 * @return
 	 */
 	public static ArrayList<Staff> getAllStaff() {
