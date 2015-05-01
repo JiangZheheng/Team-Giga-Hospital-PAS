@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class GUIMain extends Application {
 
-	private TreatmentRoom treatmentRoom;
+	public static ArrayList<InSitu> inSitus;
 
 	/**
 	 * all treatment room in PAS,it is global variable
@@ -95,6 +95,11 @@ public class GUIMain extends Application {
 									.calculateQueueSize(GUIMain.patientQueue)){
 								delay=false;
 							}
+							for(InSitu inSitu:inSitus){
+								if(inSitu.isVacant()==false){
+									inSitu.alertManager();
+								}
+							}
 						}
 						delay=true;
 						Thread.sleep(10000*600);
@@ -137,6 +142,11 @@ public class GUIMain extends Application {
 						for(TreatmentRoom treatmentRoom:treatmentRoomList){
 							if(treatmentRoom.isVacant()==false){
 								treatmentRoom.removePatientFromTreatmentroomAutomatically();
+							}
+						}
+						for(InSitu inSitu:inSitus){
+							if(inSitu.isVacant()==false){
+								inSitu.removePatientFromTreatmentroomAutomatically();
 							}
 						}
 						try {
