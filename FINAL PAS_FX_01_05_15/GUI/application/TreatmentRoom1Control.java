@@ -1,12 +1,8 @@
 package application;
-<<<<<<< HEAD
+
 
 import java.io.FileNotFoundException;
-=======
-/**
- * Class to display the treatment rooms. Includes patient details. Allows doctor to allocate extra time, discharge patient. 
- */
->>>>>>> branch 'master' of https://github.com/JiangZheheng/Team-Giga-Hospital-PAS.git
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
