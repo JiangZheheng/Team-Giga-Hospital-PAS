@@ -283,31 +283,25 @@ public class SortPatientQueue {
 	 * @throws HospitalPASException
 	 */
 	public boolean redirectEmergencyPatient(LinkedList<Patient> allPatients,LinkedList<Patient> patientQueue,
-			Patient patient, List<TreatmentRoom> treatmentRooms,OnCall onCall)
+			Patient patient, List<TreatmentRoom> treatmentRooms,List<InSitu> inSitus)
 			throws HospitalPASException {
 
 		// if you are unable to put emergency patient into a treatment room then
 		// alert on call team
 		if (!pushEmergencyPatientIntoTreatmentRoom(patientQueue, patient,
 				treatmentRooms)) {
-			
-			
-			if (onCall.isOnCallEngaged1()==true&&onCall.isOnCallEngaged2()==true) {
-				allPatients.remove(patient);
-				throw new HospitalPASException(
-						ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
-			} else if(onCall.isOnCallEngaged1()==false){
-				
-				onCall.setOnCallEngaged1(true);
-
-				throw new HospitalPASException(
-						ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
-			}else if(onCall.isOnCallEngaged2()==false){
-				onCall.setOnCallEngaged2(true);
-				throw new HospitalPASException(
-						ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
+			for(InSitu inSitu:inSitus){
+				if(inSitu.isVacant()==true){
+					inSitu.setPatient(patient);
+					
+					throw new HospitalPASException(
+							ExceptionsEnums.EMERGENCYSENTTOONCALL.getException());
+				}else{
+					throw new HospitalPASException(
+							ExceptionsEnums.ONCALLENGAGEDEXCEPTION.getException());
+				}
 			}
-
+			
 		}
 		return true;
 	}

@@ -123,7 +123,7 @@ public class AlterTriageControl implements Initializable {
 						patient.setTriageCategory(Triage.EMERGENCY);
 						if (GUIMain.sortPatientQueue.redirectEmergencyPatient(GUIMain.allPatientList,
 								GUIMain.patientQueue, patient,
-								GUIMain.treatmentRoomList,GUIMain.onCall)) {
+								GUIMain.treatmentRoomList,GUIMain.inSitus)) {
 							warning.setText("Emergency patient is moving to the treatment room");
 						}
 					}
