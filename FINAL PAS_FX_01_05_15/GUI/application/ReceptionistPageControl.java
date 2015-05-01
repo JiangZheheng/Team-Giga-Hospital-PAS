@@ -34,91 +34,149 @@ import javafx.util.Callback;
 
 public class ReceptionistPageControl implements Initializable {
 	
-
+	/**
+	 * declaration for menu item - alter triage
+	 */
 	@FXML
 	private MenuItem alterTriage;
-
+	/**
+	 * declaration for menu item - patient search
+	 */
 	@FXML
 	private MenuItem patientSearch;
-
+	/**
+	 * declaration for button ok
+	 */
 	@FXML
 	private Button okButton;
-
+	/**
+	 * declaration for label status
+	 */
 	@FXML
 	private Label status;
-
+	/**
+	 * declaration for label treatment number
+	 */
 	@FXML
 	private Label treatmentNo;
-
+	/**
+	 * declaration for text area alert
+	 */
 	@FXML
 	private TextArea alertTextArea;
-
+	/**
+	 * declaration of menu item for new patient
+	 */
 	@FXML
 	private MenuItem newPatient;
-
+	/**
+	 * declaration of menu item set triage
+	 */
 	@FXML
 	private MenuItem setTriage;
-
+	/**
+	 * declaration of button for log out
+	 */
 	@FXML
 	private Button logOut;
-
+	/**
+	 * Displays table column for triage
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> triage;
-
+	/**
+	 * Displays table column for allergies
+	 */
 	@FXML
 	private TableColumn<Patient, String> allergies;
-
+	/**
+	 * Displays table column for address
+	 */
 	@FXML
 	private TableColumn<Patient, String> address;
-
+	/**
+	 * Displays table column for nhs number
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> nhs_number;
-
+	/**
+	 * Displays table column for last name
+	 */
 	@FXML
 	private TableColumn<Patient, String> last_name;
-
+	/**
+	 * Displays table column for telephone
+	 */
 	@FXML
 	private TableColumn<Patient, String> telephone;
-
+	/**
+	 * Displays table column for title
+	 */
 	@FXML
 	private TableColumn<Patient, String> title;
-
+	/**
+	 * Displays table column for blood group
+	 */
 	@FXML
 	private TableColumn<Patient, String> blood_group;
-
+	/**
+	 * Displays table column for first name
+	 */
 	@FXML
 	private TableColumn<Patient, String> first_name;
-
+	/**
+	 * Displays table column for patient table
+	 */
 	@FXML
 	private TableView<Patient> patientTable;
-
+	/**
+	 * Displays table column for triage next patient
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> triage_nextPatient;
-
+	/**
+	 * Displays table column for allergies next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> allergies_nextPatient;
-
+	/**
+	 * Displays table column for address next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> address_nextPatient;
-
+	/**
+	 * Displays table column for nhs number next patient
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> nhs_number_nextPatient;
-
+	/**
+	 * Displays table column for last name next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> last_name_nextPatient;
-
+	/**
+	 * Displays table column for telephone next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> telephone_nextPatient;
-
+	/**
+	 * Displays table column for title next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> title_nextPatient;
-
+	/**
+	 * Displays table column for blood group next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> blood_group_nextPatient;
-
+	/**
+	 * Displays table column for first name next patient
+	 */
 	@FXML
 	private TableColumn<Patient, String> first_name_nextPatient;
-
+	/**
+	 * Displays table view next patient
+	 */
 	@FXML
 	private TableView<Patient> nextPatient;
 

@@ -15,15 +15,20 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class PageTest extends Application {
-
+	/**
+	 * default constructor
+	 */
 	public PageTest() {
-		// TODO Auto-generated constructor stub
+
 	}
 
+	/**
+	 * this method starts the page test
+	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		GUIMain.patientQueue=new LinkedList<Patient>();
-		GUIMain.inSitus=new ArrayList<InSitu>();
+		GUIMain.patientQueue = new LinkedList<Patient>();
+		GUIMain.inSitus = new ArrayList<InSitu>();
 		GUIMain.inSitus.add(new InSitu());
 		GUIMain.inSitus.add(new InSitu());
 		try {
@@ -42,8 +47,8 @@ public class PageTest extends Application {
 	}
 
 	public void refresh() {
-		if(!GUIMain.patientQueue.isEmpty()){
-		GUIMain.patientQueue.sort(new SortPatientComparator());
+		if (!GUIMain.patientQueue.isEmpty()) {
+			GUIMain.patientQueue.sort(new SortPatientComparator());
 		}
 	}
 

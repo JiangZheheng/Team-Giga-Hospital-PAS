@@ -1,6 +1,5 @@
 package application;
 
-
 import java.io.FileNotFoundException;
 
 import java.io.IOException;
@@ -20,100 +19,170 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+/**
+ * This class controls treatment room 1
+ * 
+ *
+ */
 public class TreatmentRoom1Control implements Initializable {
 
-	public static TreatmentRoom treatmentRoom ;
-
+	/**
+	 * declaration of treatment room var
+	 */
+	public static TreatmentRoom treatmentRoom;
+	/**
+	 * declaration of patient var
+	 */
 	private Patient patient;
+	/**
+	 * declaration of text area for telephone
+	 */
 	@FXML
 	private TextArea telephoneTextArea1;
-
+	/**
+	 * declaration of first name var
+	 */
 	@FXML
 	private Label firstName1;
-
+	/**
+	 * declaration of label blood group
+	 */
 	@FXML
 	private Label bloodGroup1;
-
+	/**
+	 * declaration of back button
+	 */
 	@FXML
 	private Button back;
-
+	/**
+	 * declaration of text area last name
+	 */
 	@FXML
 	private TextArea lastNameTextArea1;
-
+	/**
+	 * declaration for text box
+	 */
 	@FXML
 	private TextArea textBox21;
-
+	/**
+	 * declaration of text area allergies
+	 */
 	@FXML
 	private TextArea allergiesTextArea1;
-
+	/**
+	 * declaration of label for last name
+	 */
 	@FXML
 	private Label lastName1;
-
+	/**
+	 * declaration of button for discharge
+	 */
 	@FXML
 	private Button dischargePatient1;
-
+	/**
+	 * declaration for log out button
+	 */
 	@FXML
 	private Button logOut1;
-
+	/**
+	 * declaration of label for triage cat
+	 */
 	@FXML
 	private Label triageCategory1;
-
+	/**
+	 * declaration of label for timer
+	 */
 	@FXML
 	private Label timer1;
-
+	/**
+	 * declaration of text area for first name
+	 */
 	@FXML
 	private TextArea firstNameTextArea1;
-
+	/**
+	 * declaration of label for address
+	 */
 	@FXML
 	private Label address1;
-
+	/**
+	 * declaration of button for further action
+	 */
 	@FXML
 	private Button furtherAction1;
-
+	/**
+	 * declaration label for title
+	 */
 	@FXML
 	private Label title1;
-
+	/**
+	 * declaration text area blood group
+	 */
 	@FXML
 	private TextArea bloodGroupTextArea1;
-
+	/**
+	 * declaration for button for recategorise patient
+	 */
 	@FXML
 	private Button recategorisePatient1;
-
+	/**
+	 * declaration of label for nhs number
+	 */
 	@FXML
 	private Label nhsNumber;
-
+	/**
+	 * declaration of label for text box
+	 */
 	@FXML
 	private TextArea textBox11;
-
+	/**
+	 * declaration of text area triage cat
+	 */
 	@FXML
 	private TextArea triageCategoryTextArea1;
-
+	/**
+	 * declaration for nhs text area
+	 */
 	@FXML
 	private TextArea nhsNumberTextArea;
-
+	/**
+	 * declaration of button for allocate extra time
+	 */
 	@FXML
 	private Button allocateExtraTime1;
-
+	/**
+	 * declaration for label - telephone
+	 */
 	@FXML
 	private Label telephoneNumber1;
-
+	/**
+	 * declaration for label of patient details
+	 */
 	@FXML
 	private Label patientDetails1;
-
+	/**
+	 * declaration for text area for address
+	 */
 	@FXML
 	private TextArea addressTextArea1;
-
+	/**
+	 * declaration of treatment room
+	 */
 	@FXML
 	private Label treatmentRoom11;
-
+	/**
+	 * declaration of text area title
+	 */
 	@FXML
 	private TextArea titleTextArea1;
-
+	/**
+	 * declaration of label for allergies
+	 */
 	@FXML
 	private Label allergies1;
 
 	/**
-	 * Logs the user out when button is clicked 
+	 * Logs the user out when button is clicked
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -141,31 +210,35 @@ public class TreatmentRoom1Control implements Initializable {
 	}
 
 	/**
-	 * discharges patient on click 
+	 * discharges patient on click
+	 * 
 	 * @param event
-	 * @throws FileNotFoundException 
+	 * @throws FileNotFoundException
 	 */
 	@FXML
-	void onClickDischargePatient(ActionEvent event) throws FileNotFoundException {
+	void onClickDischargePatient(ActionEvent event)
+			throws FileNotFoundException {
 		treatmentRoom.dischargePatient(GUIMain.allPatientList, patient);
 	}
 
 	/**
 	 * Can be expanded on further development
+	 * 
 	 * @param event
 	 */
 	@FXML
 	void onClickFurtherAction(ActionEvent event) {
 
 	}
-	
+
 	/**
 	 * Allows doctor to recategorise patient
+	 * 
 	 * @param event
 	 */
 	@FXML
 	void onClickRecategorisePatient(ActionEvent event) {
-		
+
 		Stage newStage = new Stage();
 
 		Parent root;
@@ -186,11 +259,11 @@ public class TreatmentRoom1Control implements Initializable {
 
 		stage.close();
 
-		
 	}
 
 	/**
 	 * Allows doctor to allocate extra time to patient
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -199,7 +272,8 @@ public class TreatmentRoom1Control implements Initializable {
 	}
 
 	/**
-	 * Closes window 
+	 * Closes window
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -236,7 +310,7 @@ public class TreatmentRoom1Control implements Initializable {
 	}
 
 	/**
-	 * ~Method to refresh the Page and keep the information up to date 
+	 * ~Method to refresh the Page and keep the information up to date
 	 */
 	private void refreshThread() {
 		Thread myThread = new Thread(new Runnable() {
@@ -250,7 +324,7 @@ public class TreatmentRoom1Control implements Initializable {
 
 							@Override
 							public void run() {
-								patient=treatmentRoom.patientInTreatmentRoom;
+								patient = treatmentRoom.patientInTreatmentRoom;
 								refreshPatientInformation();
 
 							}
@@ -268,7 +342,7 @@ public class TreatmentRoom1Control implements Initializable {
 	}
 
 	/**
-	 * Method to refresh the information on the page 
+	 * Method to refresh the information on the page
 	 */
 	private void refreshPatientInformation() {
 
@@ -291,7 +365,7 @@ public class TreatmentRoom1Control implements Initializable {
 			String time = setTime(treatmentRoom.getTimeOutOfTreatmentRoom()
 					.getTime() - new Date().getTime());
 			timer1.setText(time);
-		}else{
+		} else {
 			nhsNumberTextArea.setText("");
 			titleTextArea1.setText("");
 			firstNameTextArea1.setText("");

@@ -28,16 +28,24 @@ public class LoginPageControl implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 	}
-
+	/**
+	 * declaration for login button
+	 */
 	@FXML
 	private Button LoginButton;
-
+	/**
+	 * declaration of label for invalid message
+	 */
 	@FXML
 	private Label invalidMess;
-
+	/**
+	 * declaration of text field for username
+	 */
 	@FXML
 	private TextField username;
-
+	/**
+	 * declaration for password field
+	 */
 	@FXML
 	private PasswordField password;
 

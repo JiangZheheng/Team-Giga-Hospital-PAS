@@ -30,61 +30,94 @@ import javafx.util.Callback;
 public class TriageNursePageControl implements Initializable {
 
 	/**
-	 * Declaring vars 
+	 * declaration of menu item set triage
 	 */
 	@FXML
 	private MenuItem setTriage;
-
+	/**
+	 * declaration of menu item new patient
+	 */
 	@FXML
 	private MenuItem newPatient;
-
+	/**
+	 * declaration of menu item for patient search
+	 */
 	@FXML
 	private MenuItem patientSearch;
-
+	/**
+	 * declaration of menu item for alter triage
+	 */
 	@FXML
 	private MenuItem alterTriage;
-
+	/**
+	 * declaration of log out button
+	 */
 	@FXML
 	private Button logout;
-
+	/**
+	 * declaration of table view for patients
+	 */
 	@FXML
 	private TableView<Patient> tableView;
-
+	/**
+	 * declaration of table column allergies
+	 */
 	@FXML
 	private TableColumn<Patient, String> allergies;
-
+	/**
+	 * declaration of table column address
+	 */
 	@FXML
 	private TableColumn<Patient, String> address;
-
+	/**
+	 * declaration of table column nhs number
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> nhs_number;
-
+	/**
+	 * declaration of table column last name
+	 */
 	@FXML
 	private TableColumn<Patient, String> last_name;
-
+	/**
+	 * declaration of table column triage
+	 */
 	@FXML
 	private TableColumn<Patient, Integer> triage;
-
+	/**
+	 * declaration of table column waiting time
+	 */
 	@FXML
 	private TableColumn<Patient, Long> waitingTime;
-
+	/**
+	 * declaration of table column telephone
+	 */
 	@FXML
 	private TableColumn<Patient, String> telephone;
-
+	/**
+	 * declaration of table column title
+	 */
 	@FXML
 	private TableColumn<Patient, String> title;
-
+	/**
+	 * declaration of table column blood group
+	 */
 	@FXML
 	private TableColumn<Patient, String> blood_group;
-
+	/**
+	 * declaration of table column first name
+	 */
 	@FXML
 	private TableColumn<Patient, String> first_name;
-
+	/**
+	 * declaration j doe button
+	 */
 	@FXML
 	private Button jDoe;
 
 	/**
-	 * Onclick will log the user out 
+	 * Onclick will log the user out
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -117,7 +150,8 @@ public class TriageNursePageControl implements Initializable {
 	}
 
 	/**
-	 * Onclick will search the patient 
+	 * Onclick will search the patient
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -141,7 +175,8 @@ public class TriageNursePageControl implements Initializable {
 	}
 
 	/**
-	 * Sets the triage with an on click event 
+	 * Sets the triage with an on click event
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -165,7 +200,8 @@ public class TriageNursePageControl implements Initializable {
 	}
 
 	/**
-	 * Alter triage code on click 
+	 * Alter triage code on click
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -339,7 +375,8 @@ public class TriageNursePageControl implements Initializable {
 	}
 
 	/**
-	 * Button to assign JDoe 
+	 * Button to assign JDoe
+	 * 
 	 * @param event
 	 */
 	public void JDoeOnClick(ActionEvent event) {
@@ -347,13 +384,14 @@ public class TriageNursePageControl implements Initializable {
 		Patient patient = new Patient();
 		patient.setFirstName("J");
 		patient.setLastName("Doe");
-		
+
 		Random randomNHSNumber = new Random();
-		for(int loop = 0; loop <= Limits.PATIENT_LIMIT_IN_PAS; loop++){
+		for (int loop = 0; loop <= Limits.PATIENT_LIMIT_IN_PAS; loop++) {
 			patient.setNhsNumber(randomNHSNumber.nextInt(8000) + 1000);
 		}
 
-		new SortPatientQueue().allocatePatientToTreatmentRoom(GUIMain.patientQueue, patient, GUIMain.treatmentRoomList);
-	
+		new SortPatientQueue().allocatePatientToTreatmentRoom(
+				GUIMain.patientQueue, patient, GUIMain.treatmentRoomList);
+
 	}
 }
