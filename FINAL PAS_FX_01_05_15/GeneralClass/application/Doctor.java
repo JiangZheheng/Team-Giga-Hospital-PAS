@@ -54,7 +54,7 @@ public class Doctor extends Staff implements ILogin, ICategorise {
 						return true;
 					} else {
 						allPatients.remove(patient);
-						new SMSAlerts().sendSMSToOnCallTeam();
+						new ManagerSMSAlerts().sendSMSToOnCallTeam();
 						throw new HospitalPASException(
 								ExceptionsEnums.QUEUELIMITEXCEEDED.getException());
 						
