@@ -220,7 +220,7 @@ public class InSituControl implements Initializable {
 			firstNameTextArea1.setText(patient.getFirstName());
 			lastNameTextArea1.setText(patient.getLastName());
 			addressTextArea1.setText(patient.getAddress());
-			telephoneTextArea1.setText(String.valueOf(patient.getNhsNumber()));
+			telephoneTextArea1.setText(String.valueOf(patient.getContactNum()));
 			allergiesTextArea1.setText(patient.getAllergies());
 			bloodGroupTextArea1.setText(patient.getBloodGroup());
 			int triage = patient.getTriage();
