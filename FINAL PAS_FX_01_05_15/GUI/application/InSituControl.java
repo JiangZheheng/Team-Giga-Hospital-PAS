@@ -87,58 +87,94 @@ public class InSituControl implements Initializable {
 	 */
 	@FXML
 	private Label triageCategory1;
-
+	/**
+	 * declaration of label for timer
+	 */
 	@FXML
 	private Label timer1;
-
+	/**
+	 * declaration for text  area for first name
+	 */
 	@FXML
 	private TextArea firstNameTextArea1;
-
+	/**
+	 * declaration of label for address
+	 */
 	@FXML
 	private Label address1;
-
+	/**
+	 * declaration of button for further action
+	 */
 	@FXML
 	private Button furtherAction1;
-
+	/**
+	 * declaration of label for title
+	 */
 	@FXML
 	private Label title1;
-
+	/**
+	 * declaration of text area for blood group
+	 */
 	@FXML
 	private TextArea bloodGroupTextArea1;
-
+	/**
+	 * declaration of button for recatrogise patient
+	 */
 	@FXML
 	private Button recategorisePatient1;
-
+	/**
+	 * declaration for nhs label
+	 */
 	@FXML
 	private Label nhsNumber;
-
+	/**
+	 * declaration for text box area
+	 */
 	@FXML
 	private TextArea textBox11;
-
+	/**
+	 * declaration of text area for triage cat
+	 */
 	@FXML
 	private TextArea triageCategoryTextArea1;
-
+	/**
+	 * declaration of nhs text area
+	 */
 	@FXML
 	private TextArea nhsNumberTextArea;
-
+	/**
+	 * declaration for button of extra time
+	 */
 	@FXML
 	private Button allocateExtraTime1;
-
+	/**
+	 * declaration for label - telephone
+	 */
 	@FXML
 	private Label telephoneNumber1;
-
+	/**
+	 * declaration of label for patient details
+	 */
 	@FXML
 	private Label patientDetails1;
-
+	/**
+	 * declaration for text area address
+	 */
 	@FXML
 	private TextArea addressTextArea1;
-
+	/**
+	 * declaration of label for treatment number
+	 */
 	@FXML
 	private Label treatmentRoom11;
-
+	/**
+	 * declaration of text area for title
+	 */
 	@FXML
 	private TextArea titleTextArea1;
-
+	/**
+	 * declaration of label for allergies
+	 */
 	@FXML
 	private Label allergies1;
 
