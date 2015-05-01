@@ -21,8 +21,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the FX application
+ * 
+ *
+ */
 public class GUIMain extends Application {
-
+	/**
+	 * array list for In Situ Rooms
+	 */
 	public static ArrayList<InSitu> inSitus;
 
 	/**
@@ -34,17 +41,29 @@ public class GUIMain extends Application {
 	 * all patient in PAS,it is global variable
 	 */
 	public static LinkedList<Patient> allPatientList;
-
+	/**
+	 * Linked list for patient Queue
+	 */
 	public static LinkedList<Patient> patientQueue;
-
+	/**
+	 * declaration of write to file class
+	 */
 	public static WriteToFile writeToFile = new WriteToFile();
-
+	/**
+	 * static var for sort patient queue
+	 */
 	public static SortPatientQueue sortPatientQueue;
-
+	/**
+	 * static int for status
+	 */
 	public static int status;
-
+	/**
+	 * static declaration for next patient from pateint class
+	 */
 	public static Patient nextPatient;
-
+	/**
+	 * declaration of On call class
+	 */
 	public static OnCall onCall = new OnCall();
 
 	public static void main(String[] args) {
@@ -65,7 +84,7 @@ public class GUIMain extends Application {
 
 			Scene scene = new Scene(root, 450, 400);
 
-			primaryStage.setTitle("FXML Welcome");
+			primaryStage.setTitle("Hospital PAS");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			threadStart();
@@ -94,9 +113,6 @@ public class GUIMain extends Application {
 						while (!delay) {
 							Thread.sleep(1000);
 
-							// sortPatientQueue
-							// .thirtyMinuteManagerAlert(patientQueue);
-
 							if (sortPatientQueue
 									.calculateQueueSize(GUIMain.patientQueue)) {
 								delay = false;
@@ -118,7 +134,9 @@ public class GUIMain extends Application {
 
 		System.out.println("inSituThread");
 		Thread inSituThread = new Thread() {
-
+			/**
+			 * Thread for in situ class
+			 */
 			@Override
 			public void run() {
 
@@ -288,7 +306,7 @@ public class GUIMain extends Application {
 		return allStaff;
 	}
 
-}
+}// end of GUIMain Class
 
-// end of GUIMain Class
+
 
