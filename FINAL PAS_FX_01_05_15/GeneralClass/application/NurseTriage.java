@@ -83,7 +83,6 @@ public class NurseTriage extends Staff implements INurseTriage,
 			if (putPatientIntoQueue(patientQueue, patient)) {
 				return true;
 			} else {
-				for()
 				allPatients.remove(patient);
 				
 
