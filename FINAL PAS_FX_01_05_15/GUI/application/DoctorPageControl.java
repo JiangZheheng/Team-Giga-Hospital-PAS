@@ -137,6 +137,18 @@ public class DoctorPageControl implements Initializable {
 	private Button treatmentRoom4;
 
 	/**
+	 * Button to go to insitu 1
+	 */
+	@FXML
+	private Button insitu1;
+
+	/**
+	 * Button to go to insitu 2
+	 */
+	@FXML
+	private Button insitu2;
+
+	/**
 	 * Button to go log out
 	 */
 	@FXML
@@ -368,8 +380,8 @@ public class DoctorPageControl implements Initializable {
 
 	/**
 	 * the method is used to refresh table, update waiting time of every patient
-	 * in queue and show the Doctor the next patient and the available
-	 * treatment room
+	 * in queue and show the Doctor the next patient and the available treatment
+	 * room
 	 */
 	private void refresh() {
 		refreshTable();
@@ -476,7 +488,9 @@ public class DoctorPageControl implements Initializable {
 	}
 
 	/**
-	 * Upon clicking the search queue menu item the doctor is redirected to the search patient page
+	 * Upon clicking the search queue menu item the doctor is redirected to the
+	 * search patient page
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -505,7 +519,9 @@ public class DoctorPageControl implements Initializable {
 	}
 
 	/**
-	 * Upon clicking the recategorise patient menu item the doctor is redirected to the search patient page
+	 * Upon clicking the recategorise patient menu item the doctor is redirected
+	 * to the search patient page
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -533,4 +549,13 @@ public class DoctorPageControl implements Initializable {
 
 	}
 
+	@FXML
+	void onClickInsitu1(ActionEvent event) {
+
+	}
+
+	@FXML
+	void onClickInsitu2(ActionEvent event) {
+
+	}
 }
