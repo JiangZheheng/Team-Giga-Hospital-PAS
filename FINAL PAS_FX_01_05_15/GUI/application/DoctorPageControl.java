@@ -30,6 +30,7 @@ import javafx.util.Callback;
  */
 public class DoctorPageControl implements Initializable {
 
+	Thread myThread;
 	/**
 	 * Table column to display allergies
 	 */
@@ -187,7 +188,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) logOut.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -220,7 +223,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom1.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -252,7 +257,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom2.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -284,7 +291,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom3.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -316,7 +325,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom4.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -348,7 +359,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom5.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -377,7 +390,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom5.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -407,7 +422,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom5.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -416,12 +433,13 @@ public class DoctorPageControl implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Thread myThread = new Thread(new Runnable() {
+		myThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				while (true) {
-					try {
+				try {
+					while (true) {
+
 						Thread.sleep(Limits.REFRESHTIME);
 						Platform.runLater(new Runnable() {
 
@@ -431,12 +449,12 @@ public class DoctorPageControl implements Initializable {
 
 							}
 						});
-
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+
 			}
 		});
 		myThread.setDaemon(true);
@@ -579,7 +597,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom1.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 
 	}
@@ -610,7 +630,9 @@ public class DoctorPageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom1.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 
 	}
