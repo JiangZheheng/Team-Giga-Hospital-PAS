@@ -129,8 +129,9 @@ public class SortPatientQueue {
 					.getTimePatientJoinsQueue().getTime();
 			minutes = TimeUnit.MILLISECONDS.toMinutes(currentTime
 					- patientTimeInQueue);
+
 			if (minutes >= Limits.UPPERMINUTES_QUEUE_LIMIT
-					* Limits.MULTIPLY_MINUTES_TO_SECONDS) {
+					) {
 				counter++;
 				if (counter == 2) {
 					twoPatientsWaiting = true;
