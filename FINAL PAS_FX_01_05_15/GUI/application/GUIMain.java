@@ -100,36 +100,36 @@ public class GUIMain extends Application {
 	 */
 	private void alertThread() {
 		System.out.println("alertThreadForQueueSize");
-//		Thread alertThread = new Thread() {
-//
-//			@Override
-//			public void run() {
-//				// delay the thread to ensure message is only sent once
-//				boolean delay = false;
-//
-//				try {
-//					while (true) {
-//						while (!delay) {
-//							Thread.sleep(1000);
-//
-//							if (sortPatientQueue
-//									.calculateQueueSize(GUIMain.patientQueue)) {
-//								delay = true;
-//							}
-//						}
-//						delay = false;
-//						Thread.sleep(1000 * 60*30);
-//					}
-//				} catch (InterruptedException e) {
-//					e.printStackTrace();
-//				}
-//
-//			}
-//
-//		};
-//
-//		alertThread.setDaemon(true);
-//		alertThread.start();
+		Thread alertThread = new Thread() {
+
+			@Override
+			public void run() {
+				// delay the thread to ensure message is only sent once
+				boolean delay = false;
+
+				try {
+					while (true) {
+						while (!delay) {
+							Thread.sleep(1000);
+
+							if (sortPatientQueue
+									.calculateQueueSize(GUIMain.patientQueue)) {
+								delay = true;
+							}
+						}
+						delay = false;
+						Thread.sleep(1000 * 60*30);
+					}
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+		};
+
+		alertThread.setDaemon(true);
+		alertThread.start();
 
 		System.out.println("alertThreadForSitu");
 		Thread inSituThread = new Thread() {
