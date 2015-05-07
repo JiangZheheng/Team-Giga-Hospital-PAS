@@ -24,8 +24,6 @@ public class ManagerSMSAlerts implements IAlert {
 	 */
 	private String managerPhoneNumber;
 
-	
-
 	/**
 	 * Method to connect to database and pull manager phone number from staff
 	 * table then set the String managerPhoneNumber
@@ -43,44 +41,43 @@ public class ManagerSMSAlerts implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
-
-			try {
-				// making the connection
-				con = DriverManager.getConnection(url,
-						DatabaseENums.DATABASEUSERNAME.getDatabase(),
-						DatabaseENums.DATABASEPASSWORD.getDatabase());
-				// create a statement object
-				stmt = con.createStatement();
-				// supply the statement object with a string to execute
-				ResultSet rs = stmt
-						.executeQuery(DatabaseENums.DATABASEMANAGERTELEPHONESELECTQUERY
-								.getDatabase());
-				while (rs.next()) {
-					this.managerPhoneNumber = rs
-							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
-									.getDatabase());
-					// close statement object
-					stmt.close();
-					// close connection
-					con.close();
-				}
-			} catch (SQLException ex) {
-				System.err.println("SQLException: " + ex.getMessage());
-
-			}
 		}
-		
+
+		try {
+			// making the connection
+			con = DriverManager.getConnection(url,
+					DatabaseENums.DATABASEUSERNAME.getDatabase(),
+					DatabaseENums.DATABASEPASSWORD.getDatabase());
+			// create a statement object
+			stmt = con.createStatement();
+			// supply the statement object with a string to execute
+			ResultSet rs = stmt
+					.executeQuery(DatabaseENums.DATABASEMANAGERTELEPHONESELECTQUERY
+							.getDatabase());
+			while (rs.next()) {
+				this.managerPhoneNumber = rs
+						.getString(DatabaseENums.DATABASESTAFFTELEPHONE
+								.getDatabase());
+			}
+			rs.close();
+			// close statement object
+			stmt.close();
+			// close connection
+			con.close();
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+
+		}
 	}
-	
+
 	/**
-	 * Method to get manager phone number 
+	 * Method to get manager phone number
+	 * 
 	 * @return
 	 */
 	public String getManagerPhoneNumber() {
 		return managerPhoneNumber;
 	}
-
-	
 
 	/**
 	 * method to send the relevant SMS when called to the hospital manager
@@ -125,8 +122,6 @@ public class ManagerSMSAlerts implements IAlert {
 		}
 	}
 
-	
-
 	/**
 	 * method to generate and send email to manager when on call team is fully
 	 * engaged with patient
@@ -137,7 +132,7 @@ public class ManagerSMSAlerts implements IAlert {
 		String user = "username=" + AlertsENums.SMSUSERNAME.getAlert();
 		String hash = "&hash=" + AlertsENums.SMSHASHKEY.getAlert();
 		String message = "&message="
-				+ AlertsENums.ALERTMANAGERONCALLFULLYENGAGED;
+				+ AlertsENums.ALERTMANAGERONCALLFULLYENGAGED.getAlert();
 		String sender = "&sender=" + AlertsENums.SMSSENDER.getAlert();
 		setManagerPhoneNumber();
 		String number = "&numbers=" + getManagerPhoneNumber();
@@ -184,14 +179,13 @@ public class ManagerSMSAlerts implements IAlert {
 
 	}
 
-
 	/**
 	 * unimplemented method
 	 */
 	@Override
 	public void sendSMSToOnCallTeam() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

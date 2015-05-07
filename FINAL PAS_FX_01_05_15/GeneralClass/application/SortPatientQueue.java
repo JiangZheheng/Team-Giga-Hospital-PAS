@@ -50,38 +50,37 @@ public class SortPatientQueue {
 	 * method to calculate the status of the queue - based on the average
 	 * waiting time of patients in the queue
 	 */
-	public void calculateStatus(LinkedList<Patient> patientQueue) {
-
-		if (patientQueue.size() <= Limits.PATIENT_LIMIT_IN_QUEUE) {
-
+	public int calculateStatus(LinkedList<Patient> patientQueue) {
+		int status=1;
+		if (!patientQueue.isEmpty()) {
 			// find the longest waiting time of the patients in the queue
 			long averageWaitingTime = 0;
 			long totalWaitingTime = 0;
 
-			for (Patient patient : GUIMain.patientQueue) {
-
-				for (int count = 0; count <= patientQueue.size(); count++) {
-					totalWaitingTime += patient.getWaitingTime();
-				}
-				{
-					averageWaitingTime = totalWaitingTime / patientQueue.size()
-							/ Limits.MILLISECS_TO_MINS
-							/ Limits.MULTIPLY_MINUTES_TO_SECONDS;
-
-				}
+			for (Patient patient : patientQueue) {
+				totalWaitingTime += patient.getWaitingTime();
 			}
-			if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT
-					&& averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
-				status = Limits.STATUS_CODE_ONE;
-			} else if (averageWaitingTime >= Limits.STATUS_ONE_UPPER_LIMIT
-					&& averageWaitingTime < Limits.STATUS_TWO_UPPER_LIMIT) {
-				status = Limits.STATUS_CODE_TWO;
-			} else if (averageWaitingTime >= Limits.STATUS_TWO_UPPER_LIMIT) {
-				status = Limits.STATUS_CODE_THREE;
-			} else if (GUIMain.patientQueue.size() == Limits.PATIENT_LIMIT_IN_QUEUE) {
+			averageWaitingTime = totalWaitingTime / patientQueue.size()
+					/ Limits.MILLISECS_TO_MINS
+					/ Limits.MULTIPLY_MINUTES_TO_SECONDS;
+
+			if (patientQueue.size() < Limits.PATIENT_LIMIT_IN_QUEUE) {
+				if (averageWaitingTime >= Limits.STATUS_ONE_LOWER_LIMIT
+						&& averageWaitingTime < Limits.STATUS_ONE_UPPER_LIMIT) {
+					status = Limits.STATUS_CODE_ONE;
+				} else if (averageWaitingTime >= Limits.STATUS_ONE_UPPER_LIMIT
+						&& averageWaitingTime < Limits.STATUS_TWO_UPPER_LIMIT) {
+					status = Limits.STATUS_CODE_TWO;
+				} else if (averageWaitingTime >= Limits.STATUS_TWO_UPPER_LIMIT) {
+					status = Limits.STATUS_CODE_THREE;
+				} else {
+					status = Limits.STATUS_CODE_FOUR;
+				}
+			} else {
 				status = Limits.STATUS_CODE_FOUR;
 			}
 		}
+		return status;
 	}
 
 	/**
@@ -107,7 +106,8 @@ public class SortPatientQueue {
 	 * @throws MessagingException
 	 * @throws AddressException
 	 */
-	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue) throws AddressException, MessagingException {
+	public boolean thirtyMinuteManagerAlert(LinkedList<Patient> patientQueue)
+			throws AddressException, MessagingException {
 
 		boolean twoPatientsWaiting = false;
 
@@ -129,8 +129,8 @@ public class SortPatientQueue {
 					.getTimePatientJoinsQueue().getTime();
 			minutes = TimeUnit.MILLISECONDS.toMinutes(currentTime
 					- patientTimeInQueue);
-			if (minutes >= Limits.UPPERMINUTES_QUEUE_LIMIT
-					* Limits.MULTIPLY_MINUTES_TO_SECONDS) {
+
+			if (minutes >= Limits.UPPERMINUTES_QUEUE_LIMIT) {
 				counter++;
 				if (counter == 2) {
 					twoPatientsWaiting = true;

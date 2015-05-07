@@ -1,7 +1,6 @@
 package application;
 
 import java.io.FileNotFoundException;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
@@ -25,6 +24,8 @@ import javafx.stage.Stage;
  *
  */
 public class TreatmentRoom1Control implements Initializable {
+
+	Thread myThread;
 
 	/**
 	 * declaration of treatment room var
@@ -204,7 +205,9 @@ public class TreatmentRoom1Control implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) logOut1.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 
 	}
@@ -256,7 +259,9 @@ public class TreatmentRoom1Control implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) treatmentRoom11.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 
 	}
@@ -295,7 +300,9 @@ public class TreatmentRoom1Control implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) back.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -313,12 +320,13 @@ public class TreatmentRoom1Control implements Initializable {
 	 * ~Method to refresh the Page and keep the information up to date
 	 */
 	private void refreshThread() {
-		Thread myThread = new Thread(new Runnable() {
+		myThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				while (true) {
-					try {
+				try {
+					while (true) {
+
 						Thread.sleep(1000);
 						Platform.runLater(new Runnable() {
 
@@ -329,12 +337,12 @@ public class TreatmentRoom1Control implements Initializable {
 
 							}
 						});
-
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Refresh thread is interrupted");
 				}
+
 			}
 		});
 		myThread.setDaemon(true);

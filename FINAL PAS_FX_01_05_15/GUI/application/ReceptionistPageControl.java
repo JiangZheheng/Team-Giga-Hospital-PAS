@@ -5,12 +5,9 @@ package application;
  */
 
 import java.io.IOException;
-
 import java.net.URL;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.Random;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +30,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ReceptionistPageControl implements Initializable {
-	
+	Thread myThread;
 	/**
 	 * declaration for menu item - alter triage
 	 */
@@ -181,7 +178,8 @@ public class ReceptionistPageControl implements Initializable {
 	private TableView<Patient> nextPatient;
 
 	/**
-	 * Patient search on click event 
+	 * Patient search on click event
+	 * 
 	 * @param event
 	 */
 	@FXML
@@ -258,6 +256,9 @@ public class ReceptionistPageControl implements Initializable {
 		}
 		Stage stage = (Stage) logOut.getScene().getWindow();
 
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -324,13 +325,15 @@ public class ReceptionistPageControl implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Thread myThread = new Thread(new Runnable() {
+		myThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				while (true) {
-					try {
+				try {
+					while (true) {
+
 						Thread.sleep(Limits.REFRESHTIME);
+
 						Platform.runLater(new Runnable() {
 
 							@Override
@@ -339,13 +342,13 @@ public class ReceptionistPageControl implements Initializable {
 
 							}
 						});
-
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
+				} catch (InterruptedException e) {
+					System.out.println("Refresh thread is interrupted");
+
 				}
 			}
+
 		});
 		myThread.setDaemon(true);
 		myThread.start();
@@ -411,7 +414,8 @@ public class ReceptionistPageControl implements Initializable {
 										boolean empty) {
 									super.updateItem(item, empty);
 									if (item != null) {
-										for (int loop = 0; loop < Triage.values().length; loop++) {
+										for (int loop = 0; loop < Triage
+												.values().length; loop++) {
 											if (item == Triage.values()[loop]
 													.getLevel()) {
 												setText(Triage.values()[loop]
@@ -477,12 +481,14 @@ public class ReceptionistPageControl implements Initializable {
 						@Override
 						protected void updateItem(Integer item, boolean empty) {
 							super.updateItem(item, empty);
-							if(item!=null){
-							for (int loop = 0; loop < Triage.values().length; loop++) {
-								if (item == Triage.values()[loop].getLevel()) {
-									setText(Triage.values()[loop].getTriage());
+							if (item != null) {
+								for (int loop = 0; loop < Triage.values().length; loop++) {
+									if (item == Triage.values()[loop]
+											.getLevel()) {
+										setText(Triage.values()[loop]
+												.getTriage());
+									}
 								}
-							}
 							}
 						}
 					};
@@ -506,6 +512,5 @@ public class ReceptionistPageControl implements Initializable {
 			patientTable.setItems(null);
 		}
 	}
-	
 
 }

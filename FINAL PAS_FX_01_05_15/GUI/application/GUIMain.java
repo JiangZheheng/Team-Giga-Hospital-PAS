@@ -1,16 +1,15 @@
 package application;
 
 import java.io.FileNotFoundException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -100,7 +99,7 @@ public class GUIMain extends Application {
 	 * Thread to manage the alerts
 	 */
 	private void alertThread() {
-		System.out.println("alertThread");
+		System.out.println("alertThreadForQueueSize");
 		Thread alertThread = new Thread() {
 
 			@Override
@@ -119,7 +118,7 @@ public class GUIMain extends Application {
 							}
 						}
 						delay = false;
-						Thread.sleep(10000 * 600);
+						Thread.sleep(1000 * 60*30);
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -132,7 +131,7 @@ public class GUIMain extends Application {
 		alertThread.setDaemon(true);
 		alertThread.start();
 
-		System.out.println("inSituThread");
+		System.out.println("alertThreadForSitu");
 		Thread inSituThread = new Thread() {
 			/**
 			 * Thread for in situ class
@@ -166,7 +165,7 @@ public class GUIMain extends Application {
 								}
 						}
 						delay = false;
-						Thread.sleep(10000 * 600);
+						Thread.sleep(1000 * 60*30);
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -178,7 +177,7 @@ public class GUIMain extends Application {
 
 		inSituThread.setDaemon(true);
 		inSituThread.start();
-		
+
 		System.out.println("alertThreadForThirtyMin");
 		Thread alertThreadForThirtyMinAlert = new Thread() {
 
@@ -194,12 +193,12 @@ public class GUIMain extends Application {
 
 							if (sortPatientQueue
 									.thirtyMinuteManagerAlert(patientQueue)) {
-								
+
 								delay = true;
 							}
 						}
 						delay = false;
-						Thread.sleep(10000 * 600);
+						Thread.sleep(1000 * 60*30);
 					}
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -223,7 +222,11 @@ public class GUIMain extends Application {
 	 * method to start the thread for the whole system
 	 */
 	private void threadStart() {
-		System.out.println("Thread Starting..");
+		System.out
+				.println("Thread Starting.. show next Patient, "
+						+ "allocate the next patient,move patient to the front,"
+						+ "remove patient from treatment and situ if time is out,"
+						+ "calculate the status, write queue into file");
 		Thread queueThread = new Thread() {
 
 			@Override
@@ -233,6 +236,8 @@ public class GUIMain extends Application {
 					while (true) {
 						Thread.sleep(1000);
 						nextPatient = patientQueue.peek();
+
+						GUIMain.status=sortPatientQueue.calculateStatus(patientQueue);
 						sortPatientQueue.allocatePatientToTreatmentRoom(
 								patientQueue, patientQueue.peek(),
 								treatmentRoomList);
@@ -268,21 +273,6 @@ public class GUIMain extends Application {
 
 		queueThread.setDaemon(true);
 		queueThread.start();
-	}
-
-	/**
-	 * Thread to refresh the queue constantly
-	 */
-	public void refresh() {
-		// nurseTriage.putPatientIntoQueue(patientQueue, patient);
-
-		try {
-
-			writeToFile.writeQueueToFile(patientQueue);
-		} catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		}
-		sortPatientQueue.calculateStatus(patientQueue);
 	}
 
 	/**
@@ -355,6 +345,4 @@ public class GUIMain extends Application {
 	}
 
 }// end of GUIMain Class
-
-
 

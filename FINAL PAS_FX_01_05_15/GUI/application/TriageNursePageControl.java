@@ -28,6 +28,8 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class TriageNursePageControl implements Initializable {
+	
+	Thread myThread;
 
 	/**
 	 * declaration of menu item set triage
@@ -140,7 +142,9 @@ public class TriageNursePageControl implements Initializable {
 			e.printStackTrace();
 		}
 		Stage stage = (Stage) logout.getScene().getWindow();
-
+		if (myThread.isAlive()) {
+			myThread.interrupt();
+		}
 		stage.close();
 	}
 
@@ -232,12 +236,13 @@ public class TriageNursePageControl implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Thread myThread = new Thread(new Runnable() {
+		 myThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				while (true) {
-					try {
+				try {
+					while (true) {
+
 						while (true) {
 							Thread.sleep(Limits.REFRESHTIME);
 							Platform.runLater(new Runnable() {
@@ -249,11 +254,11 @@ public class TriageNursePageControl implements Initializable {
 								}
 							});
 						}
-					} catch (InterruptedException e) {
-
-						e.printStackTrace();
 					}
+				} catch (InterruptedException e) {
+					System.out.println("Refresh thread is interrupted");
 				}
+
 			}
 		});
 		myThread.setDaemon(true);
