@@ -100,36 +100,36 @@ public class GUIMain extends Application {
 	 */
 	private void alertThread() {
 		System.out.println("alertThreadForQueueSize");
-		Thread alertThread = new Thread() {
-
-			@Override
-			public void run() {
-				// delay the thread to ensure message is only sent once
-				boolean delay = false;
-
-				try {
-					while (true) {
-						while (!delay) {
-							Thread.sleep(1000);
-
-							if (sortPatientQueue
-									.calculateQueueSize(GUIMain.patientQueue)) {
-								delay = true;
-							}
-						}
-						delay = false;
-						Thread.sleep(1000 * 60*30);
-					}
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
-			}
-
-		};
-
-		alertThread.setDaemon(true);
-		alertThread.start();
+//		Thread alertThread = new Thread() {
+//
+//			@Override
+//			public void run() {
+//				// delay the thread to ensure message is only sent once
+//				boolean delay = false;
+//
+//				try {
+//					while (true) {
+//						while (!delay) {
+//							Thread.sleep(1000);
+//
+//							if (sortPatientQueue
+//									.calculateQueueSize(GUIMain.patientQueue)) {
+//								delay = true;
+//							}
+//						}
+//						delay = false;
+//						Thread.sleep(1000 * 60*30);
+//					}
+//				} catch (InterruptedException e) {
+//					e.printStackTrace();
+//				}
+//
+//			}
+//
+//		};
+//
+//		alertThread.setDaemon(true);
+//		alertThread.start();
 
 		System.out.println("alertThreadForSitu");
 		Thread inSituThread = new Thread() {
@@ -235,8 +235,9 @@ public class GUIMain extends Application {
 				try {
 					while (true) {
 						Thread.sleep(1000);
-						refresh();
 						nextPatient = patientQueue.peek();
+
+						GUIMain.status=sortPatientQueue.calculateStatus(patientQueue);
 						sortPatientQueue.allocatePatientToTreatmentRoom(
 								patientQueue, patientQueue.peek(),
 								treatmentRoomList);
@@ -272,21 +273,6 @@ public class GUIMain extends Application {
 
 		queueThread.setDaemon(true);
 		queueThread.start();
-	}
-
-	/**
-	 * Thread to refresh the queue constantly
-	 */
-	public void refresh() {
-		// nurseTriage.putPatientIntoQueue(patientQueue, patient);
-
-		try {
-
-			writeToFile.writeQueueToFile(patientQueue);
-		} catch (FileNotFoundException ex) {
-			ex.printStackTrace();
-		}
-		sortPatientQueue.calculateStatus(patientQueue);
 	}
 
 	/**

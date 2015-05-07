@@ -46,6 +46,7 @@ public class OnCallSMSAlert implements IAlert {
 
 	/**
 	 * Method to get first doctor on call details
+	 * 
 	 * @return
 	 */
 	public String getFirstDoctorOnCall() {
@@ -53,7 +54,8 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * Method to get second on call details 
+	 * Method to get second on call details
+	 * 
 	 * @return
 	 */
 	public String getSecondDoctorOnCall() {
@@ -62,7 +64,8 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * Method to get first nurse on call details 
+	 * Method to get first nurse on call details
+	 * 
 	 * @return
 	 */
 	public String getFirstNurseOnCall() {
@@ -70,7 +73,8 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * Method to get second on call nurse details 
+	 * Method to get second on call nurse details
+	 * 
 	 * @return
 	 */
 	public String getSecondNurseOnCall() {
@@ -78,7 +82,8 @@ public class OnCallSMSAlert implements IAlert {
 	}
 
 	/**
-	 * Method to get third nurse on call 
+	 * Method to get third nurse on call
+	 * 
 	 * @return
 	 */
 	public String getThirdNurseOnCall() {
@@ -122,6 +127,7 @@ public class OnCallSMSAlert implements IAlert {
 								.getDatabase());
 
 			}
+			rs.close();
 			// close statement object
 			stmt.close();
 			// close connection
@@ -149,32 +155,34 @@ public class OnCallSMSAlert implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
-
-			try {
-				// making the connection
-				con = DriverManager.getConnection(url,
-						DatabaseENums.DATABASEUSERNAME.getDatabase(),
-						DatabaseENums.DATABASEPASSWORD.getDatabase());
-				// create a statement object
-				stmt = con.createStatement();
-				// supply the statement object with a string to execute
-				ResultSet rs = stmt
-						.executeQuery(DatabaseENums.DATABASEONCALLDOCTORTWOTELEHPONESELECTQUERY
-								.getDatabase());
-				while (rs.next()) {
-					this.secondDoctorOnCall = rs
-							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
-									.getDatabase());
-					// close statement object
-					stmt.close();
-					// close connection
-					con.close();
-				}
-			} catch (SQLException ex) {
-				System.err.println("SQLException: " + ex.getMessage());
-
-			}
 		}
+
+		try {
+			// making the connection
+			con = DriverManager.getConnection(url,
+					DatabaseENums.DATABASEUSERNAME.getDatabase(),
+					DatabaseENums.DATABASEPASSWORD.getDatabase());
+			// create a statement object
+			stmt = con.createStatement();
+			// supply the statement object with a string to execute
+			ResultSet rs = stmt
+					.executeQuery(DatabaseENums.DATABASEONCALLDOCTORTWOTELEHPONESELECTQUERY
+							.getDatabase());
+			while (rs.next()) {
+				this.secondDoctorOnCall = rs
+						.getString(DatabaseENums.DATABASESTAFFTELEPHONE
+								.getDatabase());
+			}
+			rs.close();
+			// close statement object
+			stmt.close();
+			// close connection
+			con.close();
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+
+		}
+
 	}
 
 	/**
@@ -193,34 +201,37 @@ public class OnCallSMSAlert implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
-
-			try {
-				// making the connection
-				con = DriverManager.getConnection(url,
-						DatabaseENums.DATABASEUSERNAME.getDatabase(),
-						DatabaseENums.DATABASEPASSWORD.getDatabase());
-				// create a statement object
-				stmt = con.createStatement();
-				// supply the statement object with a string to execute
-				ResultSet rs = stmt
-						.executeQuery(DatabaseENums.DATABASEONCALLNURSETELEHPONESELECTQUERY
-								.getDatabase());
-				while (rs.next()) {
-					this.firstNurseOnCall = rs
-							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
-									.getDatabase());
-					// close statement object
-					stmt.close();
-					// close connection
-					con.close();
-				}
-			} catch (SQLException ex) {
-				System.err.println("SQLException: " + ex.getMessage());
-
-			}
 		}
+
+		try {
+			// making the connection
+			con = DriverManager.getConnection(url,
+					DatabaseENums.DATABASEUSERNAME.getDatabase(),
+					DatabaseENums.DATABASEPASSWORD.getDatabase());
+			// create a statement object
+			stmt = con.createStatement();
+			// supply the statement object with a string to execute
+			ResultSet rs = stmt
+					.executeQuery(DatabaseENums.DATABASEONCALLNURSETELEHPONESELECTQUERY
+							.getDatabase());
+			while (rs.next()) {
+				this.firstNurseOnCall = rs
+						.getString(DatabaseENums.DATABASESTAFFTELEPHONE
+								.getDatabase());
+				
+			}
+			rs.close();
+			// close statement object
+			stmt.close();
+			// close connection
+			con.close();
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+
+		}
+
 	}
-	
+
 	/**
 	 * method to set telephone number for the second on call nurse to receive
 	 * SMS alert
@@ -237,34 +248,36 @@ public class OnCallSMSAlert implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
-
-			try {
-				// making the connection
-				con = DriverManager.getConnection(url,
-						DatabaseENums.DATABASEUSERNAME.getDatabase(),
-						DatabaseENums.DATABASEPASSWORD.getDatabase());
-				// create a statement object
-				stmt = con.createStatement();
-				// supply the statement object with a string to execute
-				ResultSet rs = stmt
-						.executeQuery(DatabaseENums.DATABASEONCALLNURSETWOTELEHPONESELECTQUERY
-								.getDatabase());
-				while (rs.next()) {
-					this.secondNurseOnCall = rs
-							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
-									.getDatabase());
-					// close statement object
-					stmt.close();
-					// close connection
-					con.close();
-				}
-			} catch (SQLException ex) {
-				System.err.println("SQLException: " + ex.getMessage());
-
-			}
 		}
+
+		try {
+			// making the connection
+			con = DriverManager.getConnection(url,
+					DatabaseENums.DATABASEUSERNAME.getDatabase(),
+					DatabaseENums.DATABASEPASSWORD.getDatabase());
+			// create a statement object
+			stmt = con.createStatement();
+			// supply the statement object with a string to execute
+			ResultSet rs = stmt
+					.executeQuery(DatabaseENums.DATABASEONCALLNURSETWOTELEHPONESELECTQUERY
+							.getDatabase());
+			while (rs.next()) {
+				this.secondNurseOnCall = rs
+						.getString(DatabaseENums.DATABASESTAFFTELEPHONE
+								.getDatabase());
+			}
+			rs.close();
+			// close statement object
+			stmt.close();
+			// close connection
+			con.close();
+		} catch (SQLException ex) {
+			System.err.println("SQLException: " + ex.getMessage());
+
+		}
+
 	}
-	
+
 	/**
 	 * method to set the telephone number for the third on call nurse to receive
 	 * SMS
@@ -281,6 +294,7 @@ public class OnCallSMSAlert implements IAlert {
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
+		}
 
 			try {
 				// making the connection
@@ -297,17 +311,18 @@ public class OnCallSMSAlert implements IAlert {
 					this.thirdNurseOnCall = rs
 							.getString(DatabaseENums.DATABASESTAFFTELEPHONE
 									.getDatabase());
-					// close statement object
-					stmt.close();
-					// close connection
-					con.close();
 				}
+				rs.close();
+				// close statement object
+				stmt.close();
+				// close connection
+				con.close();
 			} catch (SQLException ex) {
 				System.err.println("SQLException: " + ex.getMessage());
 
 			}
-		}
 	}
+
 	/**
 	 * method to send the relevant SMS to the On Call team
 	 * 
