@@ -151,7 +151,7 @@ public class ManagerSMSAlerts implements IAlert {
 		// Construct data from TxtLocal
 		String user = "username=" + AlertsENums.SMSUSERNAME.getAlert();
 		String hash = "&hash=" + AlertsENums.SMSHASHKEY.getAlert();
-		String message = "&message=" + AlertsENums.ALERTMANAGERWAITINGTIME;
+		String message = "&message=" + AlertsENums.ALERTMANAGERWAITINGTIME.getAlert();
 		String sender = "&sender=" + AlertsENums.SMSSENDER.getAlert();
 		setManagerPhoneNumber();
 		String number = "&numbers=" + getManagerPhoneNumber();

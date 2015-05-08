@@ -619,7 +619,7 @@ public class DoctorPageControl implements Initializable {
 		try {
 			root = FXMLLoader.load(getClass().getResource(
 					"/receptionistPage/AlterTriage.fxml"));
-			Scene scene = new Scene(root, 1020, 622);
+			Scene scene = new Scene(root, 687, 488);
 			newStage.setTitle("Hospital PAS");
 			newStage.setScene(scene);
 			newStage.setResizable(false);
