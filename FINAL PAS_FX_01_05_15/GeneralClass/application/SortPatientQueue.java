@@ -134,8 +134,8 @@ public class SortPatientQueue {
 				counter++;
 				if (counter == 2) {
 					twoPatientsWaiting = true;
-					managerEmail.generateAndSendEmailOnCallFullyEngaged();
-					managerSMS.sendSSMSManagerOnCallFullyEngaged();
+					managerEmail.generateAndSendEmailPatientsWaitingThirtyMinutes();
+					managerSMS.sendSSMSManagerTwoPatientsWaitingThirtyMinutes();
 				} else {
 					twoPatientsWaiting = false;
 				}

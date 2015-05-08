@@ -25,7 +25,7 @@ public class Limits {
 	/**
 	 * Constant to control the upper limit of the patient queue
 	 */
-	public static final int PATIENT_LIMIT_IN_QUEUE = 3;
+	public static final int PATIENT_LIMIT_IN_QUEUE = 10;
 
 	/**
 	 * Constant in order to allow the patient waiting time to be converted to
@@ -42,23 +42,23 @@ public class Limits {
 	 * Constant to determine the number of minutes a patient has been waiting in
 	 * the queue before they have to be moved to the front
 	 */
-	public static final int MOVE_TO_FRONT_MINUTES = 25;
+	public static final int MOVE_TO_FRONT_MINUTES = 3;
 
 	/**
 	 * Constant to set the upper limit of the waiting time in the queue in
 	 * minutes
 	 */
-	public static final int UPPERMINUTES_QUEUE_LIMIT = 30;
+	public static final int UPPERMINUTES_QUEUE_LIMIT = 7;
 
 	/**
 	 * Constant for the Number of Treatment rooms within the Hospital
 	 */
-	public final static int NUMBERS_OF_ROOM = 1;
+	public final static int NUMBERS_OF_ROOM = 5;
 
 	/**
 	 * Constant to set the time in the treatment room
 	 */
-	public final static int TIME_IN_TREATMENT_ROOM = 10;
+	public final static int TIME_IN_TREATMENT_ROOM = 5;
 
 	/**
 	 * Constant to set the extended time to be allocated
