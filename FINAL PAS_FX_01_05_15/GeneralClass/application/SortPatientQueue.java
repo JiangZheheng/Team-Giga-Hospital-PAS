@@ -355,11 +355,14 @@ public class SortPatientQueue {
 	public long calculateAverageWaitingTime(List<Patient> patients) {
 		long totalTime = 0;
 		long averageTime = 0;
+		if(!patients.isEmpty()){
 		for (Patient patient : patients) {
 			totalTime += patient.getWaitingTime();
 		}
 		averageTime = totalTime / patients.size();
 		return averageTime;
+		}
+		return 0;
 	}
 
 }
