@@ -11,10 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 /**
  * View-Controller for the Patient table.
@@ -25,6 +28,9 @@ public class SearchPatientControl {
 
 	@FXML
 	private TextField filterField;
+	
+	@FXML
+	private Button backButton;
 	
 	@FXML
 	private TableView<PatientForSearch> patientTable;
@@ -151,4 +157,12 @@ public class SearchPatientControl {
 		// 5. Add sorted (and filtered) data to the table.
 		patientTable.setItems(sortedData);
 	}
+
+	@FXML
+	private void backButtonOnClick(ActionEvent event) {
+		Stage stage  = (Stage) backButton.getScene().getWindow();
+	    stage.close();
+	}
+
+
 }
