@@ -166,7 +166,7 @@ public class TriageNursePageControl implements Initializable {
 		try {
 			root = FXMLLoader.load(getClass().getResource(
 					"/receptionistPage/SearchPatient.fxml"));
-			Scene scene = new Scene(root, 900, 522);
+			Scene scene = new Scene(root, 900, 600);
 			newStage.setTitle("Patient Search");
 			newStage.setScene(scene);
 			newStage.setResizable(false);
