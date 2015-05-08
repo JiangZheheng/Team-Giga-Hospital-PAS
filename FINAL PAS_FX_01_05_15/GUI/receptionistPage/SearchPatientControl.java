@@ -4,6 +4,8 @@
 
 package receptionistPage;
 
+import java.io.IOException;
+
 import application.GUIMain;
 import application.Patient;
 import application.Person;
@@ -13,6 +15,9 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -162,6 +167,23 @@ public class SearchPatientControl {
 	private void backButtonOnClick(ActionEvent event) {
 		Stage stage  = (Stage) backButton.getScene().getWindow();
 	    stage.close();
+	    
+	    Stage newStage = new Stage();
+
+		Parent root;
+		try {
+			root = FXMLLoader.load(getClass().getResource(
+					"/application/TriageNursePage.fxml"));
+			Scene scene = new Scene(root, 1020, 622);
+			newStage.setTitle("Patient Search");
+			newStage.setScene(scene);
+			newStage.setResizable(false);
+			newStage.show();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 

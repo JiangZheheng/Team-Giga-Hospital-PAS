@@ -176,6 +176,11 @@ public class TriageNursePageControl implements Initializable {
 
 			e.printStackTrace();
 		}
+		
+		Stage stage = (Stage) logout.getScene().getWindow();
+	
+		stage.close();
+		
 	}
 
 	/**
